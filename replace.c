@@ -23,8 +23,8 @@ int main(void)
         printf("Invalid input, number must be between 100 and 999.\n");
     } else {
         /* User (number + 6) % 10 */
-        i = (n + SUM / HUNDRED) % TEN;
-        j = (n + SUM / TEN) % TEN;
+        i = (n / HUNDRED + SUM) % TEN;
+        j = (n / TEN + SUM) % TEN;
         k = (n + SUM) % TEN;
         
         /* Print the final answer */
