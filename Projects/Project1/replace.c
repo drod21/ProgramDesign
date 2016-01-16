@@ -1,7 +1,7 @@
 /* This program prompts the user for a three digit integer between 100 and 999, then adds 6 to each digit and divides it by 10, displaying the remainder (modulus 10)
- Derek Rodriguez
- COP3514
- U3756832 */
+ Derek Rodriguez *** U3756832 *** COP3514 *** 1/13/16
+  */
+
 #include <stdio.h>
 
 #define SUM 6
@@ -22,7 +22,7 @@ int main(void)
     if (n < HUNDRED || n > MAX_NUMBER) {
         printf("Invalid input, number must be between 100 and 999.\n");
     } else {
-        /* User (number + 6) % 10 */
+        /* Sum of individual (digits + 6) modulus 10 */
         i = (n / HUNDRED + SUM) % TEN;
         j = (n / TEN + SUM) % TEN;
         k = (n + SUM) % TEN;
