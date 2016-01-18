@@ -16,7 +16,7 @@ int main(void)
     double d, dM, dKm, dIn, dCm;
     int menu;
     /* Conversion Menu */
-    printf("Please enter a number for your desired conversion:\n");
+    printf("Please select a number for your desired conversion:\n");
     printf("1: Miles to Kilometers.\n2: Kilometers to Miles.\n3: Inches to Centimeters.\n4: Centimeters to Inches.\n ");
     scanf("%d", &menu);
     
