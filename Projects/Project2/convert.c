@@ -24,7 +24,7 @@ int main(void)
     switch (menu) {
         case 1: printf("Enter the distance in miles:\n");
             scanf("%lf", &d);
-            dKm = (d * kmToM);
+            dKm = (d * mToKm);
             printf("%.2lf miles converts to %.2lf kilometers\n", d, dKm);
             break;
         case 2: printf("Enter the distance in kilometers:\n");
