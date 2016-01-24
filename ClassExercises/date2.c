@@ -23,10 +23,15 @@ int main(void) {
     } else if (month1 != month2) {
         first_earlier = month1 < month2;
     } else {
-        (day1 != day2);
         first_earlier = day1 < day2;
-        printf("The date is: %d/%d/%d.\n", month1, day1, year1);
     }
+    
+    if (first_earlier)
+        printf("%d/%d/%d is earlier than %d/%d/%d\n",
+               month1, day1, year1, month2, day2, year2);
+    else
+        printf("%d/%d/%d is earlier than %d/%d/%d\n",
+               month2, day2, year2, month1, day1, year1);
     return 0;
     
 }
