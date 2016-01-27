@@ -8,10 +8,21 @@
 */
 
 #include <stdio.h>
+#include <ctype.h>
 
-int main(void) 
-{
-printf("Please enter a message.\n");
-scanf("", &);
+int main(void) {
+    
+    int str = 0;
+    char ch;
+    printf("Please enter a message.\n");
+    
+    while ((ch = getchar()) != '\n') {
+        putchar(toupper(ch));
+        str++;
+    }
+    putchar('\n');
+
+
+    return 0;
 
 }
