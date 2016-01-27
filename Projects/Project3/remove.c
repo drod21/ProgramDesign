@@ -17,11 +17,14 @@ int main(void) {
     printf("Please enter a message.\n");
     
     while ((ch = getchar()) != '\n') {
+        if ( ispunct(ch)){
+            ch = '\t';
+        } else {
         putchar(toupper(ch));
         str++;
     }
+    }
     putchar('\n');
-
 
     return 0;
 
