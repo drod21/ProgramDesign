@@ -11,20 +11,23 @@
 #include <ctype.h>
 
 int main(void) {
-    
+    /* Define variables */
     int str = 0;
     char ch;
+    
     printf("Please enter a message.\n");
     
-    while ((ch = getchar()) != '\n') {
-        if ( ispunct(ch)){
-            ch = '\t';
+    /* While loop && if statement. */
+    while ((ch = getchar()) != '\n') { /* Reads input and escapes when enter key is pressed */
+        if ( ispunct(ch)){ /* Use ispunct function that checks for punctuation */
+            ch = '\t'; /* Define ch for punctuation marks */
         } else {
-        putchar(toupper(ch));
+        putchar(toupper(ch)); /* Puts the characters to uppercase and prints them */
         str++;
     }
+        
     }
-    putchar('\n');
+    putchar('\n'); /* New line to avoid cluttered terminal */
 
     return 0;
 

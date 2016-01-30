@@ -31,11 +31,11 @@ echo 'Output: TO ERR IS HUMAN         TO FORGIVE DIVINE'
 echo '===================================================='
 #
 ./a.out <<-EndOfInput
-All progess~ takes place outs$ide the comfort zone.
+All progess~ takes place outside the comfort zone.
 EndOfInput
 echo '----------------------------------------------------'
 echo 'Expected:'
-echo 'Enter the message: All progess~ takes place outs$ide the comfort zone.'
+echo 'Enter the message: All progess~ takes place outside the comfort zone.'
 echo 'Output: ALL PROGRESS TAKES PLACE OUTSIDE THE COMFORT ZONE' 
 echo '===================================================='
 #
