@@ -49,6 +49,7 @@ int main(void) {
     }
     
     printf("The union of set A and B is:{");
+    
     for (i = 0; i < f; i++) {
         printf(" %d,", arr1[i]);
     }
@@ -59,12 +60,16 @@ int main(void) {
         if (b[i] == a[j])
             break;
     }
-    if (i != m) {
+    if (i != n) {
         arr2[k] = b[i];
         k++;
     }
     }
     
+    printf("The intersection of set A and B is: {");
+    for (i = 0; i < k; i++)
+        printf(" %d", arr2[i]);
+    printf("}\n");
     
     return 0;
 }
