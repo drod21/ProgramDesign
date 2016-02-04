@@ -1,75 +1,80 @@
 //
 //  sets.c
-//  
+//
 //
 //  Created by Derek Rodriguez on 2/1/16.
 //
 //
 
 #include <stdio.h>
-#define M 10
-#define N 10
+#define SIZE 10
 
 int main(void) {
     
-    int a[M], b[N], f = 0, i, k = 0, j, m, n;
+    int set_A[SIZE], set_B[SIZE], union_array[SIZE], intersection_array[SIZE];
+    int i = 0, f = 0, k = 0, j = 0, elem_A, elem_B;
     
     printf("Please enter the number of elements in the first set:\n");
-    scanf("%d",&m);
-    int arr1[m];
+    scanf("%d", &elem_A);
     printf("Please enter the numbers in the first set:\n");
-    for (i = 0; i < m; i++) {
-        scanf("%d", &a[i]);
+    for (i = 0; i < elem_A; i++) {
+        scanf("%d", &set_A[i]);
     }
     printf("Please enter the number of elements in the second set:\n");
-    scanf("%d",&n);
-    int arr2[n];
+    scanf("%d", &elem_B);
+    
     printf("Please enter the numbers in the second set:\n");
-    for (i = 0; i < n; i++) {
-        scanf("%d", &b[i]);
+    for (i = 0; i < elem_B; i++) {
+        scanf("%d", &set_B[i]);
     }
+   //union
     
-    for (i = 0; i < m; i++) {
-        arr1[f] = a[i];
-        f++;
-    }
-    
-    for (i = 0; i < m; i++) {
-        k = 0;
-        for (j = 0; j < n; j++) {
-            if (b[i] == arr1[j]) {
-                k = 1;
-                break;
-            }
-        }
-        if (k == 0) {
-            arr1[f] = b[i];
-            f++;
-        }
-    }
-    
-    printf("The union of set A and B is:{");
-    for (i = 0; i < f; i++) {
-        printf(" %d,", arr1[i]);
-    }
-    printf("}\n");
-    
-    for (j = 0; j < m; j++) {
-        for (i = 0; i < n; i++) {
-        if (b[i] == a[j])
-            break;
-    }
-    if (i != n) {
-        arr2[k] = b[i];
+    for (i = 0; i < elem_A; i++) {
+        if (i < elem_A) {
+        union_array[k] = set_A[i];
         k++;
     }
     }
     
-    printf("The intersection of set A and B is: {");
-    for (i = 0; i < k; i++) {
-        printf(" %d,", arr2[i]);
+    for (i = 0; i < elem_A; i++) {
+        for (j = 0; j < elem_B; j++) {
+            if (set_B[i] == union_array[j]) {
+                f = 1;
+                break;
+            }
+        }
+        if (f == 0) {
+            if (i < elem_B) {
+            union_array[k] = set_B[i];
+            k++;
+            }
+        }
     }
-    printf("}\n");
+    printf("The union of the two sets is: { ");
+    for (i = 0; i < k; i++) {
+        printf(" %d", union_array[i]);
+    }
+    printf(" }\n");
     
+    // intersection
+    
+    for (j = 0; j < elem_A; j++) {
+        for (i = 1; i < elem_B; i++) {
+            if (set_B[i] == set_A[j])
+                break;
+        }
+        if (i != elem_B) {
+            intersection_array[k] = set_B[i];
+            printf("%d",intersection_array[k]);
+            k++;
+        }
+    }
+    
+    printf("The intersection of the two sets is: { ");
+    for (i = 0; i < k; i++) {
+        printf(" %d", intersection_array[i]);
+    }
+    printf(" }\n");
     return 0;
+
 }
