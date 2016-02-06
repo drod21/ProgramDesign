@@ -2,8 +2,8 @@
  * 2/5/2016
  * U37516832
  *
- * Stores two user inputs into arrays (length the user defined) and compares the two sets
- * for union and intersection
+ * Stores two user inputs into arrays (length also defined by user) and compares the two sets
+ * for logical union and intersection
  */
 
 #include <stdio.h>
@@ -18,14 +18,13 @@ int main(void) {
     
     printf("Please enter the number of elements in the first set:\n");
     scanf("%d", &elem_A);
-    
     printf("Please enter the numbers in the first set:\n"); /* Check user input, set that equal to array size for set_A */
     for (i = 0; i < elem_A; i++) {
         scanf("%d", &set_A[i]);
     }
+    
     printf("Please enter the number of elements in the second set:\n");
     scanf("%d", &elem_B);
-    
     printf("Please enter the numbers in the second set:\n"); /* Check user input, set that equal to array size for set_B */
     for (i = 0; i < elem_B; i++) {
         scanf("%d", &set_B[i]);
@@ -39,10 +38,9 @@ int main(void) {
         }
     }
     
-    /* Comparison check for set B, along with variable f for true/false to store into union array */
+    /* Comparison check for set B, along with variable f storing true/false, passing integers to union array */
     for (i = 0; i < elem_B; i++) {
         f = 0;
-        
         for (j = 0; j < elem_B; j++) {
             if (set_B[i] == union_array[j]) {
                 f = 1;
@@ -58,14 +56,13 @@ int main(void) {
             }
         }
     }
+    
     selection_sort(union_array, k); /* Sort the numbers in the union array */
     printf("The union of the two sets is: {"); /* Print pattern for union */
     for (i = 0; i < k; i++) {
         printf(" %d", union_array[i]);
     }
-    
     printf(" }\n");
-    
     
     /* Detect intersection */
     k = 0;
