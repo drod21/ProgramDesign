@@ -1,4 +1,8 @@
-/*cents.c, project 5
+/*cents.c, project 5. 
+ ** Calculates the number of quarters, nickels, dimes, pennies **
+ ** needed for the user input cent amount **
+ ** Derek Rodriguez **
+ ** U37516832 **
  */
 
 #include <stdio.h>
@@ -33,9 +37,13 @@ void coins(int cents, int *quarters, int *dimes, int *nickels, int *pennies) {
         printf("Invalid amount %d,\nAmount must be between 0 and 10000, inclusive\n", cents);
     } else {
         /* Do the computations and store them as pointers */
+        /* Divides total cents into 25 and stores the variable */
         *quarters = cents / QUARTER;
+        /* Takes the remainder of cents and quarters, divides by 10 */
         *dimes = cents % QUARTER / DIME;
+        /* Takes the remainder of cents, quarters, dimes, divides by 5 */
         *nickels = cents % QUARTER % DIME / NICKEL;
+        /* Takes the remainder of cents, quarts, dimes, and nickels */
         *pennies = cents % QUARTER % DIME % NICKEL;
     }
 }
