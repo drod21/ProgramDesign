@@ -1,6 +1,8 @@
 /*****************************************************************/
 /* This program adds, subtracts, or multiplies complex numbers.  */
 /* Project 5, Program Design					 */
+/* Derek Rodriguez */
+/* U37516832 */
 /*****************************************************************/ 
 #include <stdio.h>
 void read_numbers(double *r1, double *i1, double *r2, double *i2);
@@ -53,26 +55,38 @@ int main(void)
 
 void read_numbers(double *r1, double *i1, double *r2, double *i2)
 {
-
-	//add your code here
+    /* Read in the user input numbers for the real and imaginary sets */
+    printf("Enter the real component for the first number:\n");
+    scanf("%lf", r1);
+    printf("Enter the imaginary component for the first number:\n");
+    scanf("%lf", i1);
+    printf("Enter the real component for the second number:\n");
+    scanf("%lf", r2);
+    printf("Enter the imaginary component for the second number:\n");
+    scanf("%lf", i2);
 
 
 }
 void add(double r1, double i1, double r2, double i2, double *r3, double *i3)
 {
-
-	//add your code here
+    /* Add the two real numbers and add the two imaginary numbers */
+    *r3 = r1 + r2;
+    *i3 = i1 + i2;
 
 }
 void subtract(double r1, double i1, double r2, double i2, double *r3, double *i3)
 {
-
-	//add your code here
+    /* Subtract the two real numbers and subtract the two imaginary numbers */
+    *r3 = r1 - r2;
+    *i3 = i1 - i2;
 
 }
 void multiply(double r1, double i1, double r2, double i2, double *r3, double *i3)
 {
-	//add your code here
+    /* Multiply the two real subtracted from the two imaginary multiplied */
+    *r3 = (r1 * r2) - (i1 * i2);
+    /* The sum of i1 * r2 and i2 * r1 */
+    *i3 = (i1 * r2) + (i2 * r1);
 
 }
 void print_complex(double r3, double i3)
