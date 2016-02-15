@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-void edge(int n, int a[], int b[]);
+void edge(int n, int *a1, int *a2);
 int main(void)
 {
 	int input[8]={0};
@@ -24,12 +24,12 @@ int main(void)
 	return 0;
 }
 
-void edge(int n, int a[], int b[])
+void edge(int n, int *a1, int *a2)
 {
 
 
 	int i;
-	b[0]=0;
+	*b=0;
 	for (i = 1;i<n; i++)
 		if(a[i]==a[i-1])
 			b[i]=0;
