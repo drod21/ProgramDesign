@@ -37,14 +37,18 @@ void edge(int n, int *a1, int *a2)
             b[i]=0;
         else
             b[i]=1;*/
-    int *p;
-    int *q = a2;
     *a2 = 0;
+    int *p = a1;
+    
+    
     for (p = a1; p < a1 + n; p++) {
-        if(*p == *p - 1) {
-            *a2 = *p;
+        if (*p == *(p - 1)) {
+            *a2 = 0;
         } else {
-			*a2 = *p-1;
+            *a2 = 1;
         }
+        a2++;
+//printf("%d", *a2);
     }
+    
 }
