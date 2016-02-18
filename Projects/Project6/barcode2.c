@@ -5,28 +5,28 @@
 
 #include <stdio.h>
 
-void* edge(int n, int *a1, int *a2);
+void edge(int n, int *a1, int *a2);
 int main(void)
 {
 	int input[8]={0};
     int output[8];
-    int *p;
 
     int i;
-	printf("please enter the 8 bit bar code");
+	printf("please enter the 8 bit bar code:\n");
     for(i = 0; i < 8; i++) {
-		scanf("%1d", input);
+		scanf("%1d", &input[i]);
     }
 
-    p = edge(8, input, output);
+   edge(8, input, output);
+    
 
 	for(i = 0; i < 8; i++)
-		printf("%d", *p);
+		printf("%d", output[i]);
 
 	return 0;
 }
 
-void* edge(int n, int *a1, int *a2)
+void edge(int n, int *a1, int *a2)
 {
     
     
@@ -37,16 +37,14 @@ void* edge(int n, int *a1, int *a2)
             b[i]=0;
         else
             b[i]=1;*/
-    int a[0];
-   // a1 = &a[0];
     int *p;
-    
-    for (p = &a[1]; p < &a[n]; p++){
-        if(*p == *a1){
-            a2 = p;
-        }else{
-			a2 = a1;
+    int *q = a2;
+    *a2 = 0;
+    for (p = a1; p < a1 + n; p++) {
+        if(*p == *p - 1) {
+            *a2 = *p;
+        } else {
+			*a2 = *p-1;
         }
     }
-    return a2;
 }
