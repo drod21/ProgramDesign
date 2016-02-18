@@ -29,11 +29,12 @@ int main(void)
 void edge(int n, int *a1, int *a2)
 {
     int *p;
-    *a2 = 0;
+    *a2 = 0; /* Begin *a2 at zero */
     
+    /* Start *p at second element in the array that a1 is pointing to */
     for (p = a1 + 1; p < a1 + n; p++) {
-        a2++;
-        if (*p == *(p - 1)) {
+        a2++; /* Increment a2 through the loop */
+        if (*p == *(p - 1)) { /* Compares *p at its position to the previous position */
             *a2 = 0;
         } else {
             *a2 = 1;
