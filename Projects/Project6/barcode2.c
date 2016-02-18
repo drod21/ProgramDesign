@@ -28,27 +28,15 @@ int main(void)
 
 void edge(int n, int *a1, int *a2)
 {
-    
-    
-   /* int i;
-    b[0]=0;
-    for (i = 1;i<n; i++)
-        if(a[i]==a[i-1])
-            b[i]=0;
-        else
-            b[i]=1;*/
+    int *p;
     *a2 = 0;
-    int *p = a1;
     
-    
-    for (p = a1; p < a1 + n; p++) {
+    for (p = a1 + 1; p < a1 + n; p++) {
+        a2++;
         if (*p == *(p - 1)) {
             *a2 = 0;
         } else {
             *a2 = 1;
         }
-        a2++;
-//printf("%d", *a2);
     }
-    
 }
