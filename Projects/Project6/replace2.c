@@ -17,22 +17,25 @@ void swap(int *p, int *q);
 int main(void)
 {
     /* Declare Variables */
-    int num[0], i, j, dig, number, repl[0];
+    int i, j, dig;
     
     /* User input for size of number and the number itself */
     printf("Enter the number of digits of the number:\n");
-    scanf("%1d", &dig);
+    scanf("%d", &dig);
+    int num[dig];
+    int repl[dig];
     printf("Enter the number.\n");
     for (i = 0; i < dig; i++) {
         scanf("%1d", &num[i]);
     }
+    //for (i = 0; i < dig; i++)
+      //  printf("%d", num[i]);
     
-    
-    replace(&i, repl, dig); /* Replace values with computed values */
-    
+    replace(num, repl, dig); /* Replace values with computed values */
     swap(&i, &j); /* exchange values of i and j */
         
         /* Print the final answer */
+    
     
     for (i = 0; i < dig; i++) {
         printf("%d", repl[i]);
@@ -44,25 +47,24 @@ int main(void)
 void replace(int *a, int *b, int n)
 {
     int *p;
-    *b = 0;
     
-    for (p = a; p < a + n; p++) {
+    /*for (p = a; p < a + n; p++) {
     /* Sum of individual (digits + 6) modulus 10 */
-            *b = (*p / HUNDRED + SUM) % TEN;
+        /*b = (n / HUNDRED + SUM) % TEN;
         }
     for (p = a + 1; p < a + n; p++) {
-        *b = (*p / TEN + SUM) % TEN;
-        }
-    for (p = a; p < a + n - 1; p++) {
-        *b = (*p + SUM) % TEN;
+        *b = (n / TEN + SUM) % TEN;
+        }*/
+    for (p = a; p < a + n; p++) {
+        *b = (n + SUM) % TEN;
         }
     
 }
 void swap(int *p, int *q)
 {
     /* Creates a temporary variable to store the pointers *p && *q, and swap them. */
-    int temp = *p;
-    *p = *q;
-    *q = temp;
+    *p = *p + *q;
+    *q = *p - *q;
+    *p = *p - *q;
     
 }
