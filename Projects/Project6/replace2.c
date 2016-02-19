@@ -17,34 +17,45 @@ void swap(int *p, int *q);
 int main(void)
 {
     /* Declare Variables */
-    int num[0], i, j, k, dig, repl[0];
-    int i;
+    int num[0], i, j, dig, number, repl[0];
     
     /* User input for size of number and the number itself */
-    printf("Enter the number of digits of the number:\n")
-    scanf("%1d", &dig)
+    printf("Enter the number of digits of the number:\n");
+    scanf("%1d", &dig);
     printf("Enter the number.\n");
     for (i = 0; i < dig; i++) {
-    scanf("%d", &num[i]);
+        scanf("%1d", &num[i]);
     }
     
-    replace(num, repl, dig); /* Replace values with computed values */
+    
+    replace(&i, repl, dig); /* Replace values with computed values */
     
     swap(&i, &j); /* exchange values of i and j */
         
         /* Print the final answer */
-        printf("New integer: %d%d%d\n", i, j, k);
-    //}
+    
+    for (i = 0; i < dig; i++) {
+        printf("%d", repl[i]);
+    }
+    
     return 0;
 }
 
 void replace(int *a, int *b, int n)
 {
+    int *p;
+    *b = 0;
     
+    for (p = a; p < a + n; p++) {
     /* Sum of individual (digits + 6) modulus 10 */
-    l = (n / HUNDRED + SUM) % TEN;
-    j = (n / TEN + SUM) % TEN;
-    k = (n + SUM) % TEN;
+            *b = (*p / HUNDRED + SUM) % TEN;
+        }
+    for (p = a + 1; p < a + n; p++) {
+        *b = (*p / TEN + SUM) % TEN;
+        }
+    for (p = a; p < a + n - 1; p++) {
+        *b = (*p + SUM) % TEN;
+        }
     
 }
 void swap(int *p, int *q)
