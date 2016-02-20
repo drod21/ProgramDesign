@@ -9,34 +9,28 @@
 
 #define SUM 6
 #define TEN 10
-#define HUNDRED 100
-#define MAX_NUMBER 999
 void replace(int *a, int *b, int n);
 void swap(int *p, int *q);
 
 int main(void)
 {
     /* Declare Variables */
-    int i, j, dig;
+    int i = 0, j = 0, dig;
     
     /* User input for size of number and the number itself */
     printf("Enter the number of digits of the number:\n");
     scanf("%d", &dig);
-    int num[dig];
-    int repl[dig];
+    int num[dig], repl[dig];
     printf("Enter the number.\n");
     for (i = 0; i < dig; i++) {
         scanf("%1d", &num[i]);
     }
-    //for (i = 0; i < dig; i++)
-      //  printf("%d", num[i]);
     
     replace(num, repl, dig); /* Replace values with computed values */
-    swap(&i, &j); /* exchange values of i and j */
-        
+    swap(repl,(repl+dig-1)); /* Swap digits through pointer arithmetic */
+    
+    
         /* Print the final answer */
-    
-    
     for (i = 0; i < dig; i++) {
         printf("%d", repl[i]);
     }
@@ -47,24 +41,20 @@ int main(void)
 void replace(int *a, int *b, int n)
 {
     int *p;
-    
-    /*for (p = a; p < a + n; p++) {
-    /* Sum of individual (digits + 6) modulus 10 */
-        /*b = (n / HUNDRED + SUM) % TEN;
-        }
-    for (p = a + 1; p < a + n; p++) {
-        *b = (n / TEN + SUM) % TEN;
-        }*/
+    /* for p = a, loop through a, complete the calculation (digit + 6 % 10)
+     ** and store into *b, then increment *b **/
     for (p = a; p < a + n; p++) {
-        *b = (n + SUM) % TEN;
+        *b = (*p + SUM) % TEN;
+        b++;
         }
-    
 }
 void swap(int *p, int *q)
-{
-    /* Creates a temporary variable to store the pointers *p && *q, and swap them. */
+{/*
+    int temp = *p;
+    *p = *q;
+    *q = temp;*/
+    /* Creates a temporary variable to store the pointers *p && *q, and swap them.*/
     *p = *p + *q;
     *q = *p - *q;
     *p = *p - *q;
-    
 }
