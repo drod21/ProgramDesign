@@ -15,7 +15,7 @@ void swap(int *p, int *q);
 int main(void)
 {
     /* Declare Variables */
-    int i = 0, j = 0, dig;
+    int i = 0, dig;
     
     /* User input for size of number and the number itself */
     printf("Enter the number of digits of the number:\n");
