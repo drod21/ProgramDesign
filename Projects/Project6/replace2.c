@@ -49,10 +49,7 @@ void replace(int *a, int *b, int n)
         }
 }
 void swap(int *p, int *q)
-{/*
-    int temp = *p;
-    *p = *q;
-    *q = temp;*/
+{
     /* Creates a temporary variable to store the pointers *p && *q, and swap them.*/
     *p = *p + *q;
     *q = *p - *q;
