@@ -50,7 +50,7 @@ void replace(int *a, int *b, int n)
 }
 void swap(int *p, int *q)
 {
-    /* Creates a temporary variable to store the pointers *p && *q, and swap them.*/
+    /* Swaps first and last value through pointer arithmetic. */
     *p = *p + *q;
     *q = *p - *q;
     *p = *p - *q;
