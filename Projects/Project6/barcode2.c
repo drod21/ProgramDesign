@@ -1,6 +1,9 @@
 /*****************************************************************
  * This program finds the edges of light and dark regions of the
  * input binary bit pattern.
+ * Derek Rodriguez *
+ * U37516832 *
+ * 2/18/16 *
  * ***************************************************************/
 
 #include <stdio.h>
