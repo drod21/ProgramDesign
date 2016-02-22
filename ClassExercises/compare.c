@@ -32,7 +32,7 @@ int *find_smallest(int a[], int n)
 {
 	   int *p_min = &a[0];
     int *p;
-	   for (p = &a[0]; p < &a[n]; p++)
+	   for (p = &a[1]; p < &a[n]; p++)
        {
            if(*p < *p_min)
                p_min = p;
