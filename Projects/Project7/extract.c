@@ -27,13 +27,21 @@ int main()
 void extract(char *s1, char *s2)
 {
     int read_in;
+    int flag = 0;
+    char *www = "www";
+    char *edu = "edu";
     printf("Please enter a web address: ");
     read_in = read_line(s1, STR_LEN);
     /* Copies s1 to s2  and prints */
     strcpy(s2, s1);
-    printf("%s\n", s2);
+   // printf("%s\n", s2);
     
-
+    if (strstr(s2, edu) != NULL && strstr(s2, www) != NULL) {
+        printf("Contains .edu and www.\n");
+        printf("%s\n", s2);
+    } else {
+        printf("Web address starting with www. and ending with .edu not found\n");
+    }
 }
 
 /*read_line skips the white space(s) before beginning to store input characters*/
@@ -41,6 +49,9 @@ int read_line(char *str, int n)
 {
     int ch, i = 0;
 
+    /*while((ch = getchar()) == ' ')
+        *str++=ch;
+    i++;*/
     while ((ch = getchar()) != '\n')
     {  if (i < n)
     {
