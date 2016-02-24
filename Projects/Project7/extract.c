@@ -29,10 +29,11 @@ void extract(char *s1, char *s2)
     int read_in;
     printf("Please enter a web address: ");
     read_in = read_line(s1, STR_LEN);
-    /* Concatanates s1 to s2  and prints */
+    /* Copies s1 to s2  and prints */
     strcpy(s2, s1);
     printf("%s\n", s2);
     
+
 }
 
 /*read_line skips the white space(s) before beginning to store input characters*/
@@ -40,9 +41,6 @@ int read_line(char *str, int n)
 {
     int ch, i = 0;
 
-    /*while((ch = getchar()) == ' ')
-        *str++=ch;
-    i++;*/
     while ((ch = getchar()) != '\n')
     {  if (i < n)
     {
