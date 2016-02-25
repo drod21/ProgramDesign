@@ -24,6 +24,8 @@ int main() {
     //printf("%s\n", in_address);
     extract(in_address, out_address);
     
+    printf("%s\n", out_address);
+    
     
     
     return 0;
