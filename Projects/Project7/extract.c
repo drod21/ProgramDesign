@@ -13,8 +13,7 @@ void extract(char *s1, char *s2);
 int read_line(char *str, int n);
 void removeChar(char *str, char garbage);
 #define STR_LEN 1000
-int main()
-{
+int main() {
     int read_in;
     char in_address[STR_LEN + 1];
     char out_address[STR_LEN + 1];
@@ -30,8 +29,7 @@ int main()
     return 0;
 }
 
-void extract(char *s1, char *s2)
-{
+void extract(char *s1, char *s2) {
     char *p;
     char *key;
     char *flag;
@@ -54,14 +52,11 @@ void extract(char *s1, char *s2)
 }
 
 /*read_line skips the white space(s) before beginning to store input characters*/
-int read_line(char *str, int n)
-{
+int read_line(char *str, int n) {
     int ch, i = 0;
 
-    while ((ch = getchar()) != '\n')
-    {
-        if (i < n)
-    {
+    while ((ch = getchar()) != '\n') {
+        if (i < n) {
         *str++= ch;
         i++;
     }
@@ -70,13 +65,3 @@ int read_line(char *str, int n)
     return i;        /* number of characters stored */
 }
 
-void removeChar(char *str, char garbage) {
-    
-    char *src, *dst;
-    for (src = dst = str; *src != '\0'; src++) {
-        *dst = *src;
-        if (*dst != garbage)
-            dst++;
-    }
-    *dst = '\0';
-}
