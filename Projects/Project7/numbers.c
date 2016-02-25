@@ -18,5 +18,17 @@ int main(int argc, char *argv[])
     char *SMALL = "-s";
     char *LARGE = "-l";
     min = max= 0;
+    
+    if (0 == strcmp(argv1, SMALL)) {
+        for (i = 2; i < argc; i++) {
+            num = atoi(argv[i]);
+            if(i == 2) {
+                min = num;
+            } else if(min > num) {
+                min = num;
+            }
+        }
+        printf("The smallest number is %d\n",min);
+    
         return 0;
 }
