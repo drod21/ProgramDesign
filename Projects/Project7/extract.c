@@ -31,24 +31,19 @@ int main() {
 
 void extract(char *s1, char *s2) {
     char *p;
-    char *key;
-    char *flag;
-    /* Copies s1 to s2  and prints */
-    //strcpy(s2, s1);
-    for (p = s1; p < s1 + STR_LEN; p++) {
-        if (strstr(p, "www.")) {
-            key = strstr(p, "www.");
-        }
-        if (strstr(p, ".edu")) {
-            flag = strstr(p, ".edu");
-        }
-    }
-    s2 = malloc((strlen(key) + strlen(flag) + 1));
-    strcat(s2, key);
-    strcat(s2, flag);
-    printf("%s \n", s2);
+    char *www = strstr(s1, "www.");
+    char *edu = strstr(s1, ".edu");
     
-    //printf("Web address starting with www. and ending with .edu not found\n");
+    if (www != NULL && edu != NULL) {
+        p = s2;
+        while (www < (edu + 4)) {
+            *p = *www;
+            www++;
+            p++;
+        }
+    } else {
+    printf("Web address starting with www. and ending with .edu not found\n");
+    }
 }
 
 /*read_line skips the white space(s) before beginning to store input characters*/
