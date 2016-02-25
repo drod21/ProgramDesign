@@ -1,10 +1,10 @@
-//
-//  extract.c
-//  
-//
-//  Created by Derek Rodriguez on 2/22/16.
-//
-//
+/* This program takes user input web address and verifies it is valid *
+ * by finding www. and .edu, not allowing .com, .org, etc.. *
+ * then extracts the web address and stores into an output array and prints *
+ * Derek Rodriguez *
+ * U37516832 *
+ * 2/25/16 *
+ */
 
 #include <stdio.h>
 #include <string.h>
@@ -15,15 +15,16 @@ void removeChar(char *str, char garbage);
 #define STR_LEN 1000
 int main() {
     int read_in;
-    char in_address[STR_LEN + 1];
+    char in_address[STR_LEN + 1]; /* Input and output arrays */
     char out_address[STR_LEN + 1];
     
-    
+    /* Prompts user to input web address, then uses read_line function to
+     * store into in address, then calls on extract function */
     printf("Please enter a web address: ");
     read_in = read_line(in_address, STR_LEN);
-    //printf("%s\n", in_address);
     extract(in_address, out_address);
     
+    /* Print the final web address */
     printf("%s\n", out_address);
     
     
@@ -32,18 +33,21 @@ int main() {
 }
 
 void extract(char *s1, char *s2) {
+    /* Pointers for loop, and to extract the address of www and edu from s1 */
     char *p;
     char *www = strstr(s1, "www.");
     char *edu = strstr(s1, ".edu");
-    
+    /* Checks if www and edu exit */
     if (www != NULL && edu != NULL) {
         p = s2;
+        /* While loop to store the slots for www through edu */
         while (www < (edu + 4)) {
             *p = *www;
             www++;
             p++;
         }
     } else {
+        /* Error message if www and edu are not present */
     printf("Web address starting with www. and ending with .edu not found\n");
     }
 }
