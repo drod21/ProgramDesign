@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
     /* Checks for command line args <= 1 (no -l/-s nor values provided),
-     *if no args, return error message */
+     *if no args, return error message and exit the program */
     if (argc <= 1) {
         printf("Invalid option. -l for largest number or -s for smallest\n");
         printf("number followed by ten numbers.\n");
