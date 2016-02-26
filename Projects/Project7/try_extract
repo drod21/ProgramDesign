@@ -35,7 +35,7 @@ http://www.stanford.edu
 EndOfInput
 echo '----------------------------------------------------'
 echo 'Expected:'
-echo 'Input: http://www.usf.edu/admission/' 
+echo 'Input: http://www.stanford.edu' 
 echo 'Output: www.stanford.edu' 
 #
 echo '===================================================='
