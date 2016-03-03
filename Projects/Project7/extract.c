@@ -46,6 +46,9 @@ void extract(char *s1, char *s2) {
             www++;
             p++;
         }
+	if (www > edu) {
+	   printf("Web address starting with www. and ending with .edu not found\n");
+	}
     } else {
         /* Error message if www and edu are not present */
     printf("Web address starting with www. and ending with .edu not found\n");
