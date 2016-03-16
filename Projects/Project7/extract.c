@@ -11,7 +11,6 @@
 #include <stdlib.h>
 void extract(char *s1, char *s2);
 int read_line(char *str, int n);
-void removeChar(char *str, char garbage);
 #define STR_LEN 1000
 int main() {
     int read_in;
