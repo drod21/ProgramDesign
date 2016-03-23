@@ -51,7 +51,7 @@ void translate(char *word, char *phone_number) {
     int i = 0;
     char *q = NULL;
     
-    for (i = 0; word[i] != '\0'; i++) {
+    for (i = 0; i < 7; i++) {
         switch (word[i]) {
             case 'A':
             case 'B':
