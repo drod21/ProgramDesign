@@ -5,24 +5,101 @@
 //  Created by Derek Rodriguez on 3/21/16.
 //
 //
-#define MAX_LEN 7
 void translate(char *word, char *phone_number);
 
 
 #include <stdio.h>
+#define n 30
 
 
 int main() {
-    char *fileName = "phone_list.txt"; /* File Name */
-    char *out_File = "phone_list.txt.cvt"; /*Output File Name */
-    FILE *numbers = fopen(fileName, "r");
-    FILE *output = fopen(out_File, "r+w");
+    FILE *in_File,*out_File;
+    char word[8];
+    char input_File[n];  /* Read in file name */
+    char output_File[n];  /* Write out file name */
+    char phone_number[8];
+
+    
+    printf("Please enter the file name:\n");
+    scanf("%s", input_File);
+    
+    snprintf(output_File, n, "%s.cvt", input_File);
+    printf("Output file name: %s\n", output_File);
+    
+    in_File = fopen(input_File, "r");
+    out_File = fopen(output_File, "w");
     
     
+    if (in_File == NULL) {
+        printf("File doesn't exist\n");
+    } else {
+        while (!feof(in_File)) {
+            fscanf(in_File, "%s",word);
+            //function calling for translate word to phone number
+            translate(word, phone_number);
+            fprintf(out_File,"%s\n", phone_number);
+        }
+    }
+    
+    fclose(in_File);
+    fclose(out_File);
     
     return 0;
 }
 
 void translate(char *word, char *phone_number) {
+    int i = 0;
+    char *q = NULL;
     
+    for (i = 0; word[i] != '\0'; i++) {
+        switch (word[i]) {
+            case 'A':
+            case 'B':
+            case 'C':
+                q = "2";
+                break;
+            case 'D':
+            case 'E':
+            case 'F':
+                q = "3";
+                break;
+            case 'G':
+            case 'H':
+            case 'I':
+                q = "4";
+                break;
+            case 'J':
+            case 'K':
+            case 'L':
+                q = "5";
+                break;
+            case 'M':
+            case 'N':
+            case 'O':
+                q = "6";
+                break;
+            case 'P':
+            case 'R':
+            case 'S':
+                q = "7";
+                break;
+            case 'T':
+            case 'U':
+            case 'V':
+                q = "8";
+                break;
+            case 'W':
+            case 'X':
+            case 'Y':
+                q = "9";
+                break;
+            default:
+                break;
+        }
+        
+        *phone_number++= *q;
+    }
+    
+    *phone_number = '\0';
 }
+
