@@ -1,10 +1,10 @@
-//
-//  phone_numbers.c
-//  
-//
-//  Created by Derek Rodriguez on 3/21/16.
-//
-//
+/* Translates seven-letter words in a file *
+ * to their corresponding phone numbers *
+ * Derek Rodriguez *
+ * U37516832 *
+ */
+
+ 
 void translate(char *word, char *phone_number);
 
 
@@ -22,7 +22,7 @@ int main() {
     
     printf("Please enter the file name:\n");
     scanf("%s", input_File);
-    
+    /* Add the .cvt extension to the user input file name */
     snprintf(output_File, n, "%s.cvt", input_File);
     printf("Output file name: %s\n", output_File);
     
@@ -33,11 +33,12 @@ int main() {
     if (in_File == NULL) {
         printf("File doesn't exist\n");
     } else {
-        while (!feof(in_File)) {
-            fscanf(in_File, "%s",word);
+        while (!feof(in_File) && !ferror(in_File)) {
+            if (fscanf(in_File, "%s",word) == 1) {
             //function calling for translate word to phone number
             translate(word, phone_number);
             fprintf(out_File,"%s\n", phone_number);
+            }
         }
     }
     
@@ -51,7 +52,9 @@ void translate(char *word, char *phone_number) {
     int i = 0;
     char *q = NULL;
     
-    for (i = 0; i < 7; i++) {
+    /* For loop to iterate through each letter */
+    for (i = 0; word[i] != '\0'; i++) {
+        /* Switch statement to change each letter to the corresponding number */
         switch (word[i]) {
             case 'A':
             case 'B':
@@ -96,7 +99,7 @@ void translate(char *word, char *phone_number) {
             default:
                 break;
         }
-        
+        /* Set phone_number equal to q, and increase phone_number */
         *phone_number++= *q;
     }
     
