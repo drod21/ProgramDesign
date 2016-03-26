@@ -9,7 +9,7 @@ void translate(char *word, char *phone_number);
 
 
 #include <stdio.h>
-#define n 30
+#define n 100
 
 
 int main() {
@@ -32,6 +32,7 @@ int main() {
     
     if (in_File == NULL) {
         printf("File doesn't exist\n");
+        return 1;
     } else {
         while (!feof(in_File) && !ferror(in_File)) {
             if (fscanf(in_File, "%s",word) == 1) {
