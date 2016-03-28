@@ -35,8 +35,6 @@ int read_line2(char *str, int n)
 {
           int ch, i = 0;
 	  while((ch = getchar()) == ' ') ;
-          *str++=ch;
-          i++;
           while ((ch = getchar()) != '\n')
           {  if (i < n)
              {
