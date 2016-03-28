@@ -2,3 +2,13 @@
 ClassExercises/a.out
 
 *.out
+
+.cproject
+
+.idea/.name
+
+*.xml
+
+*.iml
+
+.project
