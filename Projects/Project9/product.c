@@ -15,7 +15,6 @@ struct product {
     double sale_volume;
 };
 
-void separate(struct product products[], double prices, double sold);
 void selection_sort(struct product products[], int n);
 void printProducts(FILE *out_File, struct product products[], int count);
 void display(struct product products[], int count);
@@ -26,7 +25,6 @@ int main() {
     struct product products[len];
     char *in_File_Name = "sale.txt";
     char *out_File_Name = "sorted_products.txt";
-
     int count = 0;
     
     in_File = fopen(in_File_Name, "r");
@@ -37,23 +35,18 @@ int main() {
         return 1;
     } else {
         while (!feof(in_File) && !ferror(in_File)) {
-            fscanf(in_File, "%s %lf %lf", products[count].name, &products[count].price, &products[count].num_pounds_sold);
+            fscanf(in_File, "%s %lf %lf", products[count].name, &products[count].price, &products[count].num_pounds_sold); /* Scan in the text files contents to corresponding structure values */
             count++;
-
         }
-
+        /* Sort the values and print to the text file */
         selection_sort(products, count);
-
         printProducts(out_File, products, count);
     }
 
+    /* Close the files */
     fclose(in_File);
     fclose(out_File);
     return 0;
-    
-}
-void separate(struct product products[], double prices, double sold) {
-    
 }
 
 void display(struct product products[], int count) {
@@ -72,7 +65,7 @@ void selection_sort(struct product products[], int n) {
     if (n == 1)
         return;
     
-    for (i = 1; i < n; i++)
+    for (i = 1; i < n; i++) /* Sort the products by volume */
         if (getVolume(&products[i]) > getVolume(&products[largest]))
             largest = i;
     
@@ -89,9 +82,9 @@ void selection_sort(struct product products[], int n) {
 void printProducts(FILE *out_File, struct product products[], int count) {
     int i = 0;
     
-    
+    /* Print the results out to the out file */
     fprintf(out_File, "#name\tunit price($)\tunit (pound) sold\tsale volume ($)\n");
-    
+    /* For loop to run through each member of product and print */
     for (i = 1; i < count; i++) {
     fprintf(out_File, "%d\t%s\t%lf\t%lf\t%lf\n", i, products[i].name, products[i].price, products[i].num_pounds_sold, getVolume(&products[i]));
             }
@@ -100,7 +93,7 @@ void printProducts(FILE *out_File, struct product products[], int count) {
 }
 
 double getVolume(struct product products[]) {
-    
+    /* Pointers to the corresponding member of product to find the volume and store it */
     products->sale_volume = products->price * products->num_pounds_sold;
 
     return products->sale_volume;
