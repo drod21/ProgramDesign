@@ -45,11 +45,10 @@ int main(int argc, char *argv[]) {
             fscanf(in_File, "%s %lf %lf", products[count].name, &products[count].price, &products[count].num_pounds_sold); /* Scan in the text files contents to corresponding structure values */
             count++;
         }
+        /* Sort the values and print to the text file */
+        selection_sort(products, count);
+        printProducts(out_File, products, count);
     }
-    
-    /* Sort the values and print to the text file */
-    selection_sort(products, count);
-    printProducts(out_File, products, count);
 
     find_product(products, count, argv[1]);
 
