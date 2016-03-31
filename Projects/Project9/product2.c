@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define len 1000
@@ -21,12 +22,17 @@ void display(struct product products[], int count);
 double getVolume(struct product products[]);
 void find_product(struct product products[], int n, char *name);
 
-int main() {
+int main(int argc, char *argv[]) {
     FILE *in_File,*out_File;
     struct product products[len];
     char *in_File_Name = "sale.txt";
     char *out_File_Name = "sorted_products.txt";
     int count = 0;
+    
+    if (argc != 2) {
+        printf("usage: canopen filename\n");
+        exit(EXIT_FAILURE);
+    }
     
     in_File = fopen(in_File_Name, "r");
     out_File = fopen(out_File_Name, "w");
@@ -38,20 +44,37 @@ int main() {
         while (!feof(in_File) && !ferror(in_File)) {
             fscanf(in_File, "%s %lf %lf", products[count].name, &products[count].price, &products[count].num_pounds_sold); /* Scan in the text files contents to corresponding structure values */
             count++;
+            
         }
         /* Sort the values and print to the text file */
-        selection_sort(products, count);
-        printProducts(out_File, products, count);
+        //selection_sort(products, count);
+        //printProducts(out_File, products, count);
     }
-    
+    selection_sort(products, count);
+    printProducts(out_File, products, count);
+
+    find_product(products, count, argv[1]);
+
     /* Close the files */
     fclose(in_File);
     fclose(out_File);
     return 0;
+    
 }
 
+
 void find_product(struct product products[], int n, char *name) {
+    int i;
     
+    printf("Output: \n");
+    
+    for (i = 0; i < n; ++i) {
+        
+        if(strcmp(products[i].name, name)==0) {
+            
+            printf("Name: %s\nUnit price: %.2lf\nNumber of pounds sold: %.2lf\nSale volume: %.2lf\n",products[i].name, products[i].price, products[i].num_pounds_sold, products[i].sale_volume);
+        }
+    }
 }
 
 void display(struct product products[], int count) {
