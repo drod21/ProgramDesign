@@ -17,7 +17,6 @@ struct product {
 
 void selection_sort(struct product products[], int n);
 void printProducts(FILE *out_File, struct product products[], int count);
-void display(struct product products[], int count);
 double getVolume(struct product products[]);
 
 int main() {
@@ -49,15 +48,6 @@ int main() {
     return 0;
 }
 
-void display(struct product products[], int count) {
-    int i = 0;
-    printf("#name\tunit price($)\tunit (pound) sold\tsale volume ($)\n");
-    for (i = 1; i < count; i++) {
-        printf("%d\t%s\t%lf\t%lf\t%lf\n", i, products[i].name, products[i].price, products[i].num_pounds_sold, getVolume(&products[i]));
-    }
-    printf("\n");
-}
-
 void selection_sort(struct product products[], int n) {
     int i, largest = 0;
     struct product temp;
@@ -87,9 +77,7 @@ void printProducts(FILE *out_File, struct product products[], int count) {
     /* For loop to run through each member of product and print */
     for (i = 1; i < count; i++) {
     fprintf(out_File, "%d\t%s\t%lf\t%lf\t%lf\n", i, products[i].name, products[i].price, products[i].num_pounds_sold, getVolume(&products[i]));
-            }
-
-
+    }
 }
 
 double getVolume(struct product products[]) {

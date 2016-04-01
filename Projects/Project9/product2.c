@@ -18,7 +18,6 @@ struct product {
 
 void selection_sort(struct product products[], int n);
 void printProducts(FILE *out_File, struct product products[], int count);
-void display(struct product products[], int count);
 double getVolume(struct product products[]);
 void find_product(struct product products[], int n, char *name);
 
@@ -30,7 +29,7 @@ int main(int argc, char *argv[]) {
     int count = 0;
     
     if (argc != 2) {
-        printf("usage: canopen filename\n");
+        printf("Invalid arguments\n");
         exit(EXIT_FAILURE);
     }
     
@@ -64,23 +63,14 @@ void find_product(struct product products[], int n, char *name) {
     int i;
     
     printf("Output: \n");
-    
+    /* Loop through contents of the structure */
     for (i = 0; i < n; ++i) {
-        
+        /* Use string comparison to search for name */
         if(strcmp(products[i].name, name)==0) {
-            
+            /* Print the result */
             printf("Name: %s\nUnit price: %.2lf\nNumber of pounds sold: %.2lf\nSale volume: %.2lf\n",products[i].name, products[i].price, products[i].num_pounds_sold, products[i].sale_volume);
         }
     }
-}
-
-void display(struct product products[], int count) {
-    int i = 0;
-    printf("#name\tunit price($)\tunit (pound) sold\tsale volume ($)\n");
-    for (i = 1; i < count; i++) {
-        printf("%d\t%s\t%lf\t%lf\t%lf\n", i, products[i].name, products[i].price, products[i].num_pounds_sold, getVolume(&products[i]));
-    }
-    printf("\n");
 }
 
 void selection_sort(struct product products[], int n) {
