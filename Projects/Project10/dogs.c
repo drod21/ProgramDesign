@@ -54,19 +54,60 @@ int main(void)
 }
 
 struct dog *append(struct dog *list){
+    struct dog *cur, *new_node;
+    
+    new_node = malloc(sizeof(struct dog));
 
-	//add your code here and remove the return NULL; statement
-	return NULL;
+    if (new_node == NULL) {
+        printf("full");
+        return list;
+    }
+    printf("Please enter the patient number: \n");
+    scanf("%d", &new_node->number);
+    for (cur = list; cur != NULL; cur = cur->next) {
+    if (cur != NULL && new_node->number == cur->number) {
+        printf("Your dog is already a patient here. \n");
+        free(new_node);
+        return list;
+    }
+    }
+    
+    printf("Please enter the dog's name: \n");
+    read_line(new_node->dog_name, NAME_LEN);
+    printf("Please enter the dog's breed: \n");
+    read_line(new_node->breed, NAME_LEN);
+    printf("Please enter the owner's last name: \n");
+    read_line(new_node->owner_last_name, NAME_LEN);
+    new_node->next = list;
+ 
+    return new_node;
+    
+    
 }
 
 void search (struct dog *list)
 {
-	//add your code here
+    struct dog *p;
+    char *name = NULL;
+    printf("Please insert a name to find: ");
+    read_line(name, NAME_LEN);
+    
+    for (p = list; p != NULL; p = p->next) {
+        if (p->dog_name == name) {
+            printf("%s", p->dog_name);
+        } else {
+            printf("Name not found");
+        }
+    }
 
 }
 void print(struct dog *list){
 
-	//add your code here
+    struct dog *d;
+    printf("\nNumber\tName\tDog Breed\tOwner Last Name\n");
+    for (d = list; d != NULL; d = d->next) {
+        printf("%d\t%s\t%s\t%s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
+    }
 
 }
 void clear(struct dog *list)
