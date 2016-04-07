@@ -74,10 +74,14 @@ struct dog *append(struct dog *list){
     
     printf("Please enter the dog's name: \n");
     read_line(new_node->dog_name, NAME_LEN);
+    
     printf("Please enter the dog's breed: \n");
     read_line(new_node->breed, NAME_LEN);
+    
     printf("Please enter the owner's last name: \n");
     read_line(new_node->owner_last_name, NAME_LEN);
+    
+
     new_node->next = list;
  
     return new_node;
@@ -88,15 +92,15 @@ struct dog *append(struct dog *list){
 void search (struct dog *list)
 {
     struct dog *p;
-    char *name = NULL;
+    char name[NAME_LEN + 1];
     printf("Please insert a name to find: ");
     read_line(name, NAME_LEN);
     
     for (p = list; p != NULL; p = p->next) {
-        if (p->dog_name == name) {
-            printf("%s", p->dog_name);
+        if (strcmp(p->dog_name, name) == 0) {
+            print(p);
         } else {
-            printf("Name not found");
+            printf("Name not found\n");
         }
     }
 
@@ -104,9 +108,9 @@ void search (struct dog *list)
 void print(struct dog *list){
 
     struct dog *d;
-    printf("\nNumber\tName\tDog Breed\tOwner Last Name\n");
+    printf("\nNumber\tName\tDog Breed\t\tOwner Last Name\n");
     for (d = list; d != NULL; d = d->next) {
-        printf("%d\t%s\t%s\t%s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
+        printf("%d\t%s\t%s\t\t%s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
     }
 
 }
