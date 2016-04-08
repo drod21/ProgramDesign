@@ -10,7 +10,7 @@ struct dog{
 	char owner_last_name[NAME_LEN+1];
 	char breed[NAME_LEN+1];
 	struct dog *next;
-};
+}*head, *tail, *prev, *temp;
 
 
 struct dog *append(struct dog *list);
@@ -53,15 +53,12 @@ int main(void)
   }
 }
 
-struct dog *append(struct dog *list){
+struct dog *append(struct dog *list) {
     struct dog *cur, *new_node;
     
     new_node = malloc(sizeof(struct dog));
 
-    if (new_node == NULL) {
-        printf("full");
-        return list;
-    }
+ 
     printf("Please enter the patient number: \n");
     scanf("%d", &new_node->number);
     for (cur = list; cur != NULL; cur = cur->next) {
@@ -71,7 +68,7 @@ struct dog *append(struct dog *list){
         return list;
     }
     }
-    
+
     printf("Please enter the dog's name: \n");
     read_line(new_node->dog_name, NAME_LEN);
     
@@ -80,10 +77,24 @@ struct dog *append(struct dog *list){
     
     printf("Please enter the owner's last name: \n");
     read_line(new_node->owner_last_name, NAME_LEN);
-    
-
     new_node->next = list;
- 
+    /*struct dog *temp = list;
+    new_node->next = NULL;
+    
+    if (list == NULL) {
+        list = new_node;
+    } else if (list != NULL && new_node < list) {
+        new_node->next = list;
+        list = new_node;
+    } else {
+        temp = list;
+        while (temp != NULL) {
+            if (new_node > temp) {
+                
+            }
+        }
+    }
+ */
     return new_node;
     
     
@@ -108,9 +119,9 @@ void search (struct dog *list)
 void print(struct dog *list){
 
     struct dog *d;
-    printf("\nNumber\tName\tDog Breed\t\tOwner Last Name\n");
+    printf("\nNumber\tName\tBreed\tOwner Last Name\n");
     for (d = list; d != NULL; d = d->next) {
-        printf("%d\t%s\t%s\t\t%s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
+        printf("%d\t%s\t%s\t%s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
     }
 
 }
