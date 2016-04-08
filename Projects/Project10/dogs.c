@@ -57,18 +57,11 @@ struct dog *append(struct dog *list) {
     struct dog *top_list, *end_list, *temp;
     
     top_list = malloc(sizeof(struct dog));
-
- 
+    temp = malloc(sizeof(struct dog));
+    
     printf("Please enter the patient number: \n");
     scanf("%d", &top_list->number);
-    for (temp = list; temp != NULL; temp = temp->next) {
-    if (temp != NULL && top_list->number == temp->number) {
-        printf("Your dog is already a patient here. \n");
-        free(top_list);
-        return list;
-    }
-    }
-
+    
     printf("Please enter the dog's name: \n");
     read_line(top_list->dog_name, NAME_LEN);
     
@@ -77,27 +70,33 @@ struct dog *append(struct dog *list) {
     
     printf("Please enter the owner's last name: \n");
     read_line(top_list->owner_last_name, NAME_LEN);
-    top_list->next = list;
-    /*struct dog *temp = list;
-    new_node->next = NULL;
     
-    if (list == NULL) {
-        list = new_node;
-    } else if (list != NULL && new_node < list) {
-        new_node->next = list;
-        list = new_node;
-    } else {
-        temp = list;
-        while (temp != NULL) {
-            if (new_node > temp) {
-                
-            }
+    for (temp = list; temp != NULL; temp = temp->next) {
+        if (temp != NULL && top_list->number == temp->number) {
+            printf("Your dog is already a patient here. \n");
+            free(top_list);
+            return list;
         }
     }
- */
-    return top_list;
     
+    end_list = malloc(sizeof(struct dog));
+    end_list->next = malloc(sizeof(struct dog));
     
+    if (list == NULL) {
+        list = top_list;
+    } else {
+        end_list = list;
+        while (end_list->next != NULL) {
+        end_list->next->number = end_list->number;
+        strcpy(end_list->next->dog_name, end_list->dog_name);
+        strcpy(end_list->next->breed, end_list->breed);
+        strcpy(end_list->next->owner_last_name, end_list->owner_last_name);
+        end_list = end_list->next;
+        }
+        end_list->next = top_list;
+    }
+
+    return list;
 }
 
 void search (struct dog *list)
