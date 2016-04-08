@@ -54,30 +54,30 @@ int main(void)
 }
 
 struct dog *append(struct dog *list) {
-    struct dog *cur, *new_node;
+    struct dog *top_list, *end_list, *temp;
     
-    new_node = malloc(sizeof(struct dog));
+    top_list = malloc(sizeof(struct dog));
 
  
     printf("Please enter the patient number: \n");
-    scanf("%d", &new_node->number);
-    for (cur = list; cur != NULL; cur = cur->next) {
-    if (cur != NULL && new_node->number == cur->number) {
+    scanf("%d", &top_list->number);
+    for (temp = list; temp != NULL; temp = temp->next) {
+    if (temp != NULL && top_list->number == temp->number) {
         printf("Your dog is already a patient here. \n");
-        free(new_node);
+        free(top_list);
         return list;
     }
     }
 
     printf("Please enter the dog's name: \n");
-    read_line(new_node->dog_name, NAME_LEN);
+    read_line(top_list->dog_name, NAME_LEN);
     
     printf("Please enter the dog's breed: \n");
-    read_line(new_node->breed, NAME_LEN);
+    read_line(top_list->breed, NAME_LEN);
     
     printf("Please enter the owner's last name: \n");
-    read_line(new_node->owner_last_name, NAME_LEN);
-    new_node->next = list;
+    read_line(top_list->owner_last_name, NAME_LEN);
+    top_list->next = list;
     /*struct dog *temp = list;
     new_node->next = NULL;
     
@@ -95,7 +95,7 @@ struct dog *append(struct dog *list) {
         }
     }
  */
-    return new_node;
+    return top_list;
     
     
 }
