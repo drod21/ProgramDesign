@@ -79,8 +79,6 @@ struct dog *append(struct dog *list) {
         }
     }
     
-    end_list = malloc(sizeof(struct dog));
-    end_list->next = malloc(sizeof(struct dog));
     
     if (list == NULL) {
         list = top_list;
@@ -89,11 +87,11 @@ struct dog *append(struct dog *list) {
         end_list = list;
         printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
         while (end_list->next != NULL) {
-        end_list->next->number = end_list->number;
-        strcpy(end_list->next->dog_name, end_list->dog_name);
-        strcpy(end_list->next->breed, end_list->breed);
-        strcpy(end_list->next->owner_last_name, end_list->owner_last_name);
-        end_list = end_list->next;
+            end_list->next->number = end_list->number;
+            strcpy(end_list->next->dog_name, end_list->dog_name);
+            strcpy(end_list->next->breed, end_list->breed);
+            strcpy(end_list->next->owner_last_name, end_list->owner_last_name);
+            end_list = end_list->next;
         }
         end_list->next = top_list;
         printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
