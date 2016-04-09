@@ -79,6 +79,8 @@ struct dog *append(struct dog *list) {
         }
     }
     
+    end_list = malloc(sizeof(struct dog));
+    end_list->next = malloc(sizeof(struct dog));
     
     if (list == NULL) {
         list = top_list;
