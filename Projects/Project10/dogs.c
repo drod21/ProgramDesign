@@ -59,17 +59,9 @@ struct dog *append(struct dog *list) {
     top_list = malloc(sizeof(struct dog));
     temp = malloc(sizeof(struct dog));
     
+    /* Takes in patient number and checks list for existing number */
     printf("Please enter the patient number: \n");
     scanf("%d", &top_list->number);
-    
-    printf("Please enter the dog's name: \n");
-    read_line(top_list->dog_name, NAME_LEN);
-    
-    printf("Please enter the dog's breed: \n");
-    read_line(top_list->breed, NAME_LEN);
-    
-    printf("Please enter the owner's last name: \n");
-    read_line(top_list->owner_last_name, NAME_LEN);
     
     for (temp = list; temp != NULL; temp = temp->next) {
         if (temp != NULL && top_list->number == temp->number) {
@@ -78,25 +70,30 @@ struct dog *append(struct dog *list) {
             return list;
         }
     }
+    /* Enter the rest of the data to the top of the structure */
+    printf("Please enter the dog's name: \n");
+    read_line(top_list->dog_name, NAME_LEN);
+    printf("Please enter the dog's breed: \n");
+    read_line(top_list->breed, NAME_LEN);
+    printf("Please enter the owner's last name: \n");
+    read_line(top_list->owner_last_name, NAME_LEN);
+    top_list->next = NULL;
     
-    end_list = malloc(sizeof(struct dog));
-    end_list->next = malloc(sizeof(struct dog));
+    end_list = malloc(sizeof(struct dog)); /* Allocate storage for end of list */
     
+    /* Checks the list for empty at beginning, if empty, stores top of the list to 
+     * list. Else, stores the list to end of list, and loops through, 
+     * setting the previous node equal to the last(next) node */
     if (list == NULL) {
         list = top_list;
-        printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
+        list->next = NULL;
+        return top_list;
     } else {
         end_list = list;
-        printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
         while (end_list->next != NULL) {
-            end_list->next->number = end_list->number;
-            strcpy(end_list->next->dog_name, end_list->dog_name);
-            strcpy(end_list->next->breed, end_list->breed);
-            strcpy(end_list->next->owner_last_name, end_list->owner_last_name);
             end_list = end_list->next;
         }
         end_list->next = top_list;
-        printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
     }
 
     return list;
