@@ -1,3 +1,10 @@
+/* Derek Rodriguez
+ * U37516832 
+ * 4/9/16
+ * maintains records for canine patients at an animal hospital. Each dog’s record
+ * has a name, a breed, a patient number, and owner’s last name.
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -10,7 +17,7 @@ struct dog{
 	char owner_last_name[NAME_LEN+1];
 	char breed[NAME_LEN+1];
 	struct dog *next;
-}*head, *tail, *prev, *temp;
+};
 
 
 struct dog *append(struct dog *list);
@@ -66,7 +73,7 @@ struct dog *append(struct dog *list) {
     for (temp = list; temp != NULL; temp = temp->next) {
         if (temp != NULL && top_list->number == temp->number) {
             printf("Your dog is already a patient here. \n");
-            free(top_list);
+            free(top_list); /* Frees the memory for top_list if found */
             return list;
         }
     }
@@ -101,30 +108,36 @@ struct dog *append(struct dog *list) {
 
 void search (struct dog *list)
 {
+    /* Search for user input dog name */
     struct dog *p;
     char name[NAME_LEN + 1];
-    printf("Please insert a name to find: ");
+    printf("Please insert a name to find: \n");
     read_line(name, NAME_LEN);
     
     for (p = list; p != NULL; p = p->next) {
+        /* If dog is found, continue searching for another */
         if (strcmp(p->dog_name, name) == 0) {
-            print(p);
+            printf("%d\t%s\t%s\t%s\n", p->number, p->dog_name, p->breed, p->owner_last_name);
+            p = p->next;
+            continue;
         } else {
+            /* Name not found, break out of the loop */
             printf("Name not found\n");
+            break;
         }
     }
-
 }
 void print(struct dog *list){
-
+    /* Loop through the structure and print each node */
     struct dog *d;
-    printf("\nNumber\tName\tBreed\tOwner Last Name\n");
+    printf("\nNumber  Name		  Breed		  Owner Last Name\n");
     for (d = list; d != NULL; d = d->next) {
-        printf("%d\t%s\t%s\t%s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
+        printf("%d\t%s\t%18s\t%10s\n", d->number, d->dog_name, d->breed, d->owner_last_name);
     }
 
 }
 void clear(struct dog *list) {
+    /* Clears the memory upon exit */
     struct dog *p;
     while(list != NULL) {
         p = list;
