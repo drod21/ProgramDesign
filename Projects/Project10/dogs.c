@@ -64,7 +64,6 @@ struct dog *append(struct dog *list) {
     struct dog *top_list, *end_list, *temp;
     
     top_list = malloc(sizeof(struct dog));
-    temp = malloc(sizeof(struct dog));
     
     /* Takes in patient number and checks list for existing number */
     printf("Please enter the patient number: \n");
