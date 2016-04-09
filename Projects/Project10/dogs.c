@@ -84,8 +84,10 @@ struct dog *append(struct dog *list) {
     
     if (list == NULL) {
         list = top_list;
+        printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
     } else {
         end_list = list;
+        printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
         while (end_list->next != NULL) {
         end_list->next->number = end_list->number;
         strcpy(end_list->next->dog_name, end_list->dog_name);
@@ -94,6 +96,7 @@ struct dog *append(struct dog *list) {
         end_list = end_list->next;
         }
         end_list->next = top_list;
+        printf("list: %s\n top list: %s\n end list: %s\n", list->dog_name, top_list->dog_name, end_list->dog_name);
     }
 
     return list;
@@ -124,12 +127,15 @@ void print(struct dog *list){
     }
 
 }
-void clear(struct dog *list)
-{
-	//add your code here
-
+void clear(struct dog *list) {
+    struct dog *p;
+    while(list != NULL) {
+        p = list;
+        list = list->next;
+        if( p!= NULL)
+            free(p);
+    }
 }
-
 int read_line(char str[], int n)
 {
   int ch, i = 0;
