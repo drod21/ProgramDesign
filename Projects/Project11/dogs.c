@@ -55,10 +55,12 @@ struct dog *append(struct dog *list) {
     }
 
     return list;
+    free(temp);
+    free(top_list);
+    free(end_list);
 }
 
-void search (struct dog *list)
-{
+void search (struct dog *list) {
     /* Search for user input dog name */
     struct dog *p;
     char name[NAME_LEN + 1];
@@ -78,6 +80,7 @@ void search (struct dog *list)
         }
     }
 }
+
 void print(struct dog *list){
     /* Loop through the structure and print each node */
     struct dog *d;

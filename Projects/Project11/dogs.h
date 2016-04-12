@@ -10,7 +10,6 @@ struct dog{
     struct dog *next;
 };
 
-
 struct dog *append(struct dog *list);
 void search(struct dog *list);
 void print(struct dog *list);
