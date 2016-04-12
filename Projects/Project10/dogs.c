@@ -105,8 +105,7 @@ struct dog *append(struct dog *list) {
     return list;
 }
 
-void search (struct dog *list)
-{
+void search (struct dog *list) {
     /* Search for user input dog name */
     struct dog *p;
     char name[NAME_LEN + 1];

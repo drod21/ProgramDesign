@@ -13,12 +13,12 @@ CFLAGS = -Wall -g
 
 # define any directories containing header files other than /usr/include
 #
-INCLUDES = -I/home/newhall/include  -I../include
+INCLUDES = -I/~/Documents/School/ProgramDesign/  -I../include
 
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
 #   their path using -Lpath, something like:
-LFLAGS = -L/home/newhall/lib  -L../lib
+LFLAGS = -L/~/Documents/School/ProgramDesign/  -L../lib
 
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname 
@@ -26,7 +26,7 @@ LFLAGS = -L/home/newhall/lib  -L../lib
 LIBS = -lmylib -lm
 
 # define the C source files
-SRCS = emitter.c error.c init.c lexer.c main.c symbol.c parser.c
+SRCS = records.c dogs.c readline.c 
 
 # define the C object files 
 #
@@ -39,4 +39,4 @@ SRCS = emitter.c error.c init.c lexer.c main.c symbol.c parser.c
 OBJS = $(SRCS:.c=.o)
 
 # define the executable file 
-MAIN = frequency
+MAIN = records
