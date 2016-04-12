@@ -2,7 +2,6 @@
 #include <ctype.h>
 #include <string.h>
 #include "dogs.h"
-#include "readline.h"
 
 /**********************************************************
  * main: Prompts the user to enter an operation code,     *
