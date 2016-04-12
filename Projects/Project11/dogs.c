@@ -13,9 +13,13 @@
 #include "readline.h"
 
 struct dog *append(struct dog *list) {
-    struct dog *top_list, *end_list, *temp;
+    struct dog *top_list, *temp;
     
     top_list = malloc(sizeof(struct dog));
+    if (top_list == NULL) {
+        printf("Database is full; can't add more dogs.\n");
+        return list;
+    }
     
     /* Takes in patient number and checks list for existing number */
     printf("Please enter the patient number: \n");
@@ -37,7 +41,6 @@ struct dog *append(struct dog *list) {
     read_line(top_list->owner_last_name, NAME_LEN);
     top_list->next = NULL;
     
-    end_list = malloc(sizeof(struct dog)); /* Allocate storage for end of list */
     
     /* Checks the list for empty at beginning, if empty, stores top of the list to 
      * list. Else, stores the list to end of list, and loops through, 
@@ -47,37 +50,33 @@ struct dog *append(struct dog *list) {
         list->next = NULL;
         return top_list;
     } else {
-        end_list = list;
-        while (end_list->next != NULL) {
-            end_list = end_list->next;
-        }
-        end_list->next = top_list;
+        for (temp = list; temp->next != NULL; temp = temp->next);
+        temp->next = top_list;
+        top_list->next = NULL;
+        return list;
     }
-
-    return list;
+    
     free(temp);
     free(top_list);
-    free(end_list);
 }
 
 void search (struct dog *list) {
     /* Search for user input dog name */
     struct dog *p;
     char name[NAME_LEN + 1];
+    int found = 0;
     printf("Please insert a name to find: \n");
     read_line(name, NAME_LEN);
     
     for (p = list; p != NULL; p = p->next) {
         /* If dog is found, continue searching for another */
         if (strcmp(p->dog_name, name) == 0) {
+            found = 1;
             printf("%d\t%s\t%s\t%s\n", p->number, p->dog_name, p->breed, p->owner_last_name);
-            p = p->next;
-            continue;
-        } else {
-            /* Name not found, break out of the loop */
-            printf("Name not found\n");
-            break;
         }
+    }
+    if (!found) {
+        printf("Dog not found.\n");
     }
 }
 
