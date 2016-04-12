@@ -1,6 +1,8 @@
 #ifndef DOGS_H
 #define DOGS_H
 
+#include "readline.h"
+
 #define NAME_LEN 30
 struct dog{
     int number;

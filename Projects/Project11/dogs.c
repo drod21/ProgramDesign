@@ -10,7 +10,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "dogs.h"
-#include "readline.h"
 
 struct dog *append(struct dog *list) {
     struct dog *top_list, *temp;
