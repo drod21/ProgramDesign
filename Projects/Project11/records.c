@@ -1,3 +1,10 @@
+/* Derek Rodriguez
+ * U37516832
+ * 4/9/16
+ * maintains records for canine patients at an animal hospital. Each dog’s record
+ * has a name, a breed, a patient number, and owner’s last name.
+ */
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>

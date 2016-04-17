@@ -21,7 +21,7 @@ struct dog *append(struct dog *list) {
     }
     
     /* Takes in patient number and checks list for existing number */
-    printf("Please enter the patient number: \n");
+    printf("\nPlease enter the patient number: \n");
     scanf("%d", &top_list->number);
     
     for (temp = list; temp != NULL; temp = temp->next) {
@@ -64,7 +64,7 @@ void search (struct dog *list) {
     struct dog *p;
     char name[NAME_LEN + 1];
     int found = 0;
-    printf("Please insert a name to find: \n");
+    printf("\nPlease insert a name to find: \n");
     read_line(name, NAME_LEN);
     
     for (p = list; p != NULL; p = p->next) {
