@@ -32,6 +32,8 @@ int main(void)
         switch (code) {
             case 'a': dog_list = append(dog_list);
                 break;
+            case 'd': dog_list = delete_from_list(dog_list);
+                break;
             case 's': search(dog_list);
                 break;
             case 'p': print(dog_list);
