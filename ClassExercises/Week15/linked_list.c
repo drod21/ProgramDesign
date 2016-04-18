@@ -34,16 +34,29 @@ int main()
 
 struct node *add_to_list(struct node *list, int n)
 {
-	  struct node *new_node;
+	  struct node *new_node, *cur, *prev;
 	
 	  new_node = malloc(sizeof(struct node));
 	  if (new_node == NULL) {
 	    printf("Error: malloc failed in add_to_list\n");
 	    return list;
 	  }
-	  new_node->value = n;
-	  new_node->next = list;
+    
+    	  new_node->value = n;
+    for (cur = list, prev = NULL; cur != NULL && new_node->value > cur->value; prev = cur, cur = cur->next);
+    if (cur != NULL && new_node->value == cur->value) {
+        printf("Number exists\n");
+        free(new_node);
+        return list;
+    }
+
+	  new_node->next = cur;
+    if (prev == NULL)
 	  return new_node;
+    else {
+        prev->next = new_node;
+        return list;
+    }
 }
 
 struct node *search_list(struct node *list, int n)
