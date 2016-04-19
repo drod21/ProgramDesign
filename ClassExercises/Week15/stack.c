@@ -20,6 +20,7 @@ struct node* push(struct node* top, int i)
 
 struct node *make_empty(struct node *top)
 {
+    top = 0;
   return top;
 }
 
