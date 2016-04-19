@@ -12,7 +12,7 @@
 #include "dogs.h"
 
 struct dog *append(struct dog *list) {
-    struct dog *top_list, *temp;
+    struct dog *top_list, *temp, *previous;
     
     top_list = malloc(sizeof(struct dog));
     if (top_list == NULL) {
@@ -40,11 +40,23 @@ struct dog *append(struct dog *list) {
     read_line(top_list->owner_last_name, NAME_LEN);
     top_list->next = NULL;
     
+    /* Sort the list by owner name first, then dog name */
+    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, temp->owner_last_name) > 0; previous = temp, temp = temp->next);
+    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->dog_name, temp->dog_name) > 0; previous = temp, temp = temp->next);
+    top_list->next = temp;
+    
+    if (previous == NULL)
+        return top_list;
+    else {
+        previous->next = top_list;
+        return list;
+    }
+    
     
     /* Checks the list for empty at beginning, if empty, stores top of the list to 
      * list. Else, stores the list to end of list, and loops through, 
      * setting the previous node equal to the last(next) node */
-    if (list == NULL) {
+    /*if (list == NULL) {
         list = top_list;
         list->next = NULL;
         return top_list;
@@ -53,10 +65,14 @@ struct dog *append(struct dog *list) {
         temp->next = top_list;
         top_list->next = NULL;
         return list;
-    }
+    }*/
     
     free(temp);
     free(top_list);
+}
+
+struct dog* delete_from_list(struct dog *dogs) {
+    return dogs;
 }
 
 void search (struct dog *list) {
