@@ -25,6 +25,12 @@ struct node *make_empty(struct node *top)
 
 struct node *pop(struct node *top, int *i)
 {
+    struct node *temp;
+    *i = top->value;
+    temp = top;
+    top = top->next;
+    free(temp);
+    
   return top;
 }
 
