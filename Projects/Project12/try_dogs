@@ -1,5 +1,5 @@
 # Author: Jing Wang, for Program Design
-# try_dogs is a Unix shell script that will be used to test project 10.
+# try_dogs is a Unix shell script that will be used to test project 12.
 # To use the script, copy it into the same directory as your scource file
 # Set execute permission for the file by issuing the command:
 # chmod +x try_dogs
@@ -11,7 +11,7 @@
 
 echo '===================================================='
 #
-./a.out <<-EndOfInput
+./records <<-EndOfInput
 a
 73
 Max
@@ -21,7 +21,7 @@ a
 65
 Molly
 Golden Retriever
-Smith
+White
 a
 69
 Max
@@ -35,10 +35,14 @@ Lucy
 Yorkshire
 Jones
 p
-s
-Buddy
-s
-Max
+d
+53
+d
+69
+p
+d
+73
+p
 q
 EndOfInput
 echo '----------------------------------------------------'
@@ -52,7 +56,7 @@ echo 'Enter operation code: a'
 echo 'Enter patient number: 65'
 echo 'Enter dog name: Molly'
 echo 'Enter breed: Golden Retriever'
-echo 'Enter owner last name: Smith'
+echo 'Enter owner last name: White'
 echo 'Enter operation code: a'
 echo 'Enter patient number: 69'
 echo 'Enter dog name: Max'
@@ -68,15 +72,24 @@ echo 'Enter breed: Yorkshire'
 echo 'Enter owner last name: Jones'
 echo 'Enter operation code: p'
 echo 'Number  Name		Breed		Owner Last Name'
-echo '73	Max		Bulldog			White'
-echo '65	Molly		Golden Retriever	Smith'
 echo '69        Max		Poodle			Johnson'
 echo '36	Lucy		Yorkshire		Jones'
-echo 'Enter operation code: f'
-echo 'Enter dog name: Buddy'
-echo 'Dog not found.'
-echo 'Enter operation code: f'
-echo 'Enter dog name: Max'
 echo '73	Max		Bulldog			White'
-echo '69        Max		Poodle			Johnson'
+echo '65	Molly		Golden Retriever	white'
+echo 'Enter operation code: d'
+echo 'Enter dog patient number: 53'
+echo 'Dog not found.'
+echo 'Enter operation code: d'
+echo 'Enter dog patient number: 69'
+echo 'deleted: Dog name: Max, Owner last name: Johnson, breed: Poodle'
+echo 'Enter operation code: p'
+echo '36	Lucy		Yorkshire		Jones'
+echo '73	Max		Bulldog			White'
+echo '65	Molly		Golden Retriever	white'
+echo 'Enter operation code: d'
+echo 'Enter dog patient number: 73'
+echo 'deleted: Dog name: Max, Owner last name: White, breed: Bulldog'
+echo 'Enter operation code: p'
+echo '36	Lucy		Yorkshire		Jones'
+echo '65	Molly		Golden Retriever	white'
 echo 'Enter operation code: q'

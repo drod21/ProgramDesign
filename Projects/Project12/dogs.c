@@ -41,37 +41,42 @@ struct dog *append(struct dog *list) {
     top_list->next = NULL;
     
     /* Sort the list by owner name first, then dog name */
-    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, temp->owner_last_name) > 0; previous = temp, temp = temp->next);
     for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->dog_name, temp->dog_name) > 0; previous = temp, temp = temp->next);
+    
+    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, temp->owner_last_name) > 0; previous = temp, temp = temp->next);
+    
     top_list->next = temp;
     
-    if (previous == NULL)
+    if (previous == NULL) {
         return top_list;
-    else {
+    } else {
         previous->next = top_list;
         return list;
     }
-    
-    
-    /* Checks the list for empty at beginning, if empty, stores top of the list to 
-     * list. Else, stores the list to end of list, and loops through, 
-     * setting the previous node equal to the last(next) node */
-    /*if (list == NULL) {
-        list = top_list;
-        list->next = NULL;
-        return top_list;
-    } else {
-        for (temp = list; temp->next != NULL; temp = temp->next);
-        temp->next = top_list;
-        top_list->next = NULL;
-        return list;
-    }*/
-    
-    free(temp);
-    free(top_list);
 }
 
 struct dog* delete_from_list(struct dog *dogs) {
+    struct dog *top, *temp, *prev;
+    
+    top = malloc(sizeof(struct dog));
+    if (top == NULL) {
+        printf("Database is full.\n");
+        return dogs;
+    }
+    
+    printf("\nPlease enter the patient number to remove: \n");
+    scanf("%d", &top->number);
+    for (temp = dogs, prev = NULL; temp != NULL && temp->number != top->number; prev = temp, temp = temp->next);
+    
+    if (temp == NULL) {
+        return dogs;
+    }
+    if (prev == NULL) {
+        dogs = dogs->next;
+    } else {
+        prev->next = temp->next;
+    }
+    free(temp);
     return dogs;
 }
 

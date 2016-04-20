@@ -22,7 +22,7 @@ int main(void)
     char code;
     
     struct dog *dog_list = NULL;
-    printf("Operation Code: a for appending to the list, s for finding a dog"
+    printf("Operation Code: a for appending to the list, d for deleting from the list, s for finding a dog"
            ", p for printing the list; q for quit.\n");
     for (;;) {
         printf("Enter operation code: ");
