@@ -73,9 +73,12 @@ struct dog* delete_from_list(struct dog *dogs) {
     }
     if (prev == NULL) {
         dogs = dogs->next;
+         printf("Deleted: Dog name: %s, Owner Last Name: %s Breed: %s\n", temp->dog_name, temp->owner_last_name, temp->breed);
     } else {
         prev->next = temp->next;
+         printf("Deleted: Dog name: %s, Owner Last Name: %s, Breed: %s\n", temp->dog_name, temp->owner_last_name, temp->breed);
     }
+   
     free(temp);
     return dogs;
 }
