@@ -1,14 +1,24 @@
+# Makefile with flags
+# *******************************
+# Paramaters for cross-compiler, warning flags, and gdb flags
+
+CC = gcc
+CFLAGS = -Wall -g
+
+# *******************************
+# Entries for executables
+
 records: records.o dogs.o readline.o
-	gcc -o records records.o dogs.o readline.o
+	$(CC) $(CFLAGS) -o records records.o dogs.o readline.o
 
 records.o: records.c dogs.h readline.h
-	gcc -c records.c
+	$(CC) $(CFLAGS) -c records.c
 
 dogs.o: dogs.c dogs.h
-	gcc -c dogs.c
+	$(CC) $(CFLAGS) -c dogs.c
 
 readline.o: readline.c readline.h
-	gcc -c readline.c
+	$(CC) $(CFLAGS) -c readline.c
 
 
 

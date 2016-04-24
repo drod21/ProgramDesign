@@ -3,8 +3,7 @@
 
 int int_compare(const void* p, const void* q);
 
-int main()
-{
+int main() {
 	int n, i;
 	int *a;
 
@@ -13,8 +12,7 @@ int main()
 	
 	a = malloc(n*sizeof(int));
 
-	for(i = 0; i < n; i++)
-	{
+	for(i = 0; i < n; i++) {
 		printf("Enter a number: ");
 		scanf("%d", &a[i]);
 	}
@@ -31,15 +29,16 @@ int main()
 	return 0;
 }
 
-int int_compare(const void* p, const void* q)
-{
+int int_compare(const void* p, const void* q) {
+    int n1 = *(int*)p;
+    int n2 = *(int*)q;
     
-    return (*(int *)p - *(int *)q);
-    /*if (a < b)
+    if (n1 < n2)
         return -1;
-    else if (a == b)
+    if (n1 == n2)
         return 0;
     else
-        return 1;*/
+        return 1;
+    
 
 }

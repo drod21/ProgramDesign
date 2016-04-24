@@ -11,11 +11,15 @@ int main(void)
    stack1 = push(stack1, 8);
    stack1 = push(stack1, 94);
    stack2 = push(stack2, 21);
+
 	
    printf("stack1:\n");
    print_stack(stack1);
    printf("stack2:\n");
-   print_stack(stack2);   
+   print_stack(stack2);
+    stack1 = roll(stack1);
+    printf("stack 1 after rolling:\n");
+    print_stack(stack1);
 
    stack1 = pop(stack1, &n);
    printf("Popped %d from stack1\n", n);

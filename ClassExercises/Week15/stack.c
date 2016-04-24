@@ -43,22 +43,35 @@ struct node *pop(struct node *top, int *i) {
 }
 
 struct node *roll(struct node *top) {
-    struct node *temp, *new_node;
-    int i;
+    struct node *temp, *prev;
+   // int i, j, k;
+    int count;
+    prev = top;
     
-    new_node = malloc(sizeof(struct node));
-    if (new_node == NULL) {
+    /*top = pop(top, &i);
+    top = pop(top, &j);
+    top = pop(top, &k);
+    top = push(top, j);
+    top = push(top, i);
+    top = push(top, k);*/
+    prev = malloc(sizeof(struct node));
+    if (prev == NULL) {
         printf("malloc failed\n");
         return top;
     }
     
+    
+    //for (temp = top, prev = NULL; temp != NULL; prev = temp, temp = temp->next);
+    
     if (top != NULL) {
-        new_node = top;
-        i = new_node->value;
-        temp = new_node->next;
-        new_node = temp->next;
-        new_node->next->value = i;
-        return new_node;
+        temp = top->next;
+        prev = temp->next; //temp->value = 8, temp->next->value = 32
+        prev->next = top; //prev->value = 32, prev->next->value = 25
+        top = temp->next; //prev->value = 32, prev->next = 94, temp->value = 8
+        //top->next = prev->next; //top->value = 32, top->next = 94, top->next->next = 8
+        //top->next->value = i;
+        //new_node->next = top->next;
+       // new_node = temp;
     }
     
     

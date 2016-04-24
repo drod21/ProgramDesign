@@ -96,7 +96,9 @@ struct part * insert(struct part *inventory)
   printf("Enter part number: ");
   scanf("%d", &new_node->number);
 
-  for (cur = inventory, prev = NULL;cur != NULL && new_node->number >cur->number;prev = cur, cur = cur->next)
+  for (cur = inventory, prev = NULL;
+       cur != NULL && new_node->number >cur->number;
+       prev = cur, cur = cur->next)
 	;
 
   if (cur != NULL && new_node->number == cur->number) {
