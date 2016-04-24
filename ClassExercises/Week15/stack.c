@@ -43,43 +43,16 @@ struct node *pop(struct node *top, int *i) {
 }
 
 struct node *roll(struct node *top) {
-    struct node *temp, *prev;
-   // int i, j, k;
-    int count;
-    prev = top;
+    struct node *temp = top->next;
+    struct node *prev = temp->next;
     
-    /*top = pop(top, &i);
-    top = pop(top, &j);
-    top = pop(top, &k);
-    top = push(top, j);
-    top = push(top, i);
-    top = push(top, k);*/
-    prev = malloc(sizeof(struct node));
-    if (prev == NULL) {
-        printf("malloc failed\n");
-        return top;
-    }
-    
-    
-    //for (temp = top, prev = NULL; temp != NULL; prev = temp, temp = temp->next);
-    
-    if (top != NULL) {
-        temp = top->next;
-        prev = temp->next; //temp->value = 8, temp->next->value = 32
-        prev->next = top; //prev->value = 32, prev->next->value = 25
-        top = temp->next; //prev->value = 32, prev->next = 94, temp->value = 8
-        //top->next = prev->next; //top->value = 32, top->next = 94, top->next->next = 8
-        //top->next->value = i;
-        //new_node->next = top->next;
-       // new_node = temp;
-    }
-    
-    
-    /*if (top != NULL) {
-    temp = top->next;
-    top->next = temp->next;
-    }*/
-    
+    /* Swap the temp->next slot with prev->next */
+    temp->next = prev->next;
+    /* Set prev-next => top node */
+    prev->next = top;
+    /* Sets the prev node with temp->next and top properly placed after roll */
+    top = prev;
+       
     return top;
 }
 void print_stack(struct node *top) {
