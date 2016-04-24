@@ -41,9 +41,7 @@ struct dog *append(struct dog *list) {
     top_list->next = NULL;
     
     /* Sort the list by owner name first, then dog name */
-    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->dog_name, temp->dog_name) > 0; previous = temp, temp = temp->next);
-    
-    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, temp->owner_last_name) > 0; previous = temp, temp = temp->next);
+    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, temp->owner_last_name) > 0 && strcmp(top_list->dog_name, temp->dog_name) == 0; previous = temp, temp = temp->next);
     
     top_list->next = temp;
     
@@ -51,8 +49,10 @@ struct dog *append(struct dog *list) {
         return top_list;
     } else {
         previous->next = top_list;
-        return list;
     }
+    return list;
+        //for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, top_list->next->owner_last_name) == 0; previous = temp, temp = temp->next);
+
 }
 
 struct dog* delete_from_list(struct dog *dogs) {
