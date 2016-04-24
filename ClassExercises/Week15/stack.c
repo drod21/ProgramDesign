@@ -1,3 +1,8 @@
+/* Derek Rodriguez
+ * U37516832
+ * 4/24/16
+ * Add a roll function to the stack to pop "roll" the third variable to the top of the stack
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
@@ -52,7 +57,7 @@ struct node *roll(struct node *top) {
     prev->next = top;
     /* Sets the prev node with temp->next and top properly placed after roll */
     top = prev;
-       
+    
     return top;
 }
 void print_stack(struct node *top) {
