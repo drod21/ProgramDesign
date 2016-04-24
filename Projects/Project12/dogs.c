@@ -12,7 +12,7 @@
 #include "dogs.h"
 
 struct dog *append(struct dog *list) {
-    struct dog *top_list, *temp, *previous;
+    struct dog *top_list, *temp;
     
     top_list = malloc(sizeof(struct dog));
     if (top_list == NULL) {
@@ -40,22 +40,25 @@ struct dog *append(struct dog *list) {
     read_line(top_list->owner_last_name, NAME_LEN);
     top_list->next = NULL;
     
-    /* Sort the list by owner name first, then dog name */
-    for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, temp->owner_last_name) > 0; previous = temp, temp = temp->next);
-    
-    top_list->next = temp;
-    
-    if (previous == NULL) {
-        return top_list;
+    if (list == NULL) {
+        list = top_list;
+        return list;
+    } else if (strcmp(list->owner_last_name, top_list->owner_last_name) > 0) {
+        top_list->next = list;
+        list = top_list;
     } else {
-        for (temp = list; temp->next != NULL; temp = temp->next);
-        previous->next = top_list;
-        top_list->next = temp;
-        
-    }
+        /* Loop through to compare owners last name and then dog name if owners last name is similar to dog name */
+        for (temp = list; temp->next != NULL && (((strcmp(temp->next->owner_last_name, top_list->owner_last_name)< 0) || (strcmp(temp->next->owner_last_name, top_list->owner_last_name) == 0)) && (strcmp(temp->next->dog_name, top_list->dog_name) < 0)); temp = temp->next)
+            ;
+        /* Store the values and return */
+             if (temp->next == NULL) {
+                 temp->next = top_list;
+                 top_list->next = NULL;
+             } else {
+                 top_list->next = temp->next;
+                 temp->next = top_list;
+             }    }
     return list;
-        //for (temp = list, previous = NULL; temp != NULL && strcmp(top_list->owner_last_name, top_list->next->owner_last_name) == 0; previous = temp, temp = temp->next);
-
 }
 
 struct dog* delete_from_list(struct dog *dogs) {
