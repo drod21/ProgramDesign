@@ -2,6 +2,7 @@
 ClassExercises/a.out
 
 *.out
+*.o
 
 .cproject
 
