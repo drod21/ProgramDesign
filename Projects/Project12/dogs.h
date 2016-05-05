@@ -18,4 +18,5 @@ void search(struct dog *list);
 void print(struct dog *list);
 void clear(struct dog *list);
 
+
 #endif

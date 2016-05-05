@@ -4,6 +4,7 @@
 struct node *add_to_list(struct node *list, int n);
 struct node *search_list(struct node *list, int n);
 struct node *delete_from_list(struct node *list, int n);
+struct node *last_to_first(struct node *list);
 void clearList(struct node *list);
 void printList(struct node *list);
 struct node {
@@ -24,6 +25,8 @@ int main()
         first = add_to_list(first, 64);
 	first = add_to_list(first, 3);
 	first = add_to_list(first, 136);
+    printList(first);
+    first = last_to_first(first);
 
       	printList(first);	
 	clearList(first);
@@ -72,6 +75,21 @@ struct node *search_list(struct node *list, int n)
 	  return NULL;
 }
 
+struct node *last_to_first(struct node *list) {
+    struct node *prev, *cur;
+    
+    if (list == NULL)
+        return list;
+    for (prev = NULL, cur = list; cur->next != NULL; prev = cur, cur = cur->next);
+    if (prev == NULL)
+        return list;
+    else {
+        prev->next = NULL;
+        cur->next = list;
+        return cur;
+    }
+}
+
 struct node *delete_from_list(struct node *list, int n)
 {
   struct node *cur, *prev;
@@ -106,4 +124,5 @@ void printList(struct node *list)
 	struct node *p;
 	for (p = list; p!=NULL; p = p->next)
 		printf ("%d\n", p->value);
+    printf("\n");
 }
