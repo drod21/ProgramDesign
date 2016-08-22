@@ -16,13 +16,18 @@ int main(void) {
     
     printf("Please enter todays day (0 = Sunday, 1 = Monday..) 0-6: \n");
     scanf("%d", &day);
+    
+    // Checks the days for accurate range 0 - 6
     if (day < 0 || day > 6) {
+        
         printf("Invalid input. The day should be in the range of 0 to 6.\n");
-        return 0;
+        
     } else {
+        // Input dayDue for number of days to complete assignment
     printf("Please enter the number of days to do the work: \n");
     scanf("%d", &dayDue);
         
+        /* Formula for D, number of days to complete + current day % 7 to receive number 0-6 */
         D = (day + dayDue) % 7;
         
     
