@@ -29,8 +29,6 @@ int main() {
     printf("Encrypted message: \n");
     for (i = 0; i < count; i++) {
         
-        if (message[i] != ' ') {
-            
             if (message[i] >= 'A' && message[i] <= 'Z') {
                 
                 message[i] = ((message[i] - 'A') + n) % 26 + 'A';
@@ -40,10 +38,30 @@ int main() {
                 message[i] = ((message[i] - 'a') + n) % 26 + 'a';
                 
             }
-        }
         
         printf("%c", message[i]);
         
+    }
+    
+    printf("\n");
+    
+    printf("Decrypted: \n");
+    
+        
+        for (i = 0; i < count; i++) {
+            
+            if (message[i] >= 'A' && message[i] <= 'Z') {
+                
+                message[i] = ((message[i] - 'A') + 26 - n) % 26 + 'A';
+                
+            } else if (message[i] >= 'a' && message[i] <= 'z') {
+                
+                message[i] = ((message[i] - 'a') + 26 - n) % 26 + 'a';
+                
+            }
+            
+            printf("%c", message[i]);
+            
     }
     
     printf("\n");
