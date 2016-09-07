@@ -24,12 +24,17 @@ int main(void) {
     
     printf("time(sec) \t voltage\n");
     
-    for (time = 0.0; time < 1.01; time += 0.06667) {
-        
+    /* For loop to run through time from 0 to 1 second in 
+     1/15 second increments
+    */
+     for (time = 0.0; time < 1.01; time += 0.06667) {
+        /* Use formula to solve v(t) */
         volt = VOLTS * (1 - exp(-(time/t_const)));
-                        
-                        printf("%.2f \t %.2f\n", time, volt);
+        /* Print results */
+        printf("%.2f \t\t %.2f\n", time, volt);
         
     }
+    
+    return 0;
     
 }
