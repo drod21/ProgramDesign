@@ -20,29 +20,27 @@ int main() {
     
     result = add(num1, num2);
     
-    printf("The addition is: %d\n", result);
+    printf("The addition is: %d.\n", result);
     
     return 0;
     
 }
 
 int add(int n, int m) {
-    int result = 0;
     
-    /* Add n and m using recursion. 
-     * If m is 0, n is the result
-     * If m > 0, increment n and decrement m
-     * If m < 0, decrement n and increment n
-     */
+    /* Add n and m using recursion */
     
+    //If m is 0, n is the result
     if (m == 0) {
         
         return n;
     
+      //  If m > 0, increment n and decrement m
     } else if (m > 0) {
         
         add(++n, --m);
         
+        //If m < 0, decrement n and increment m
     } else if (m < 0) {
         
         add(--n, ++m);
