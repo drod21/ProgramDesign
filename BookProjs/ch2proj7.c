@@ -2,7 +2,6 @@
 //  ch2proj7.c
 //  Write a program that reads dollar amount, then shows how to pay that amount in smallest number
 //  of $20, $10, $5, $1 bills
-//  Created by Derek Rodriguez on 1/30/16.
 //
 //
 
