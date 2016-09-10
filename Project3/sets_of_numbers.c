@@ -50,16 +50,17 @@ int main() {
    printf("Deleting 5 from set A: ");
    print_set(a);
     
-    /*
+
 
    set_difference(a, b, c);
    printf("Set difference of A and B: ");
    print_set(c);
-
+    
+    
    sym_difference(a, b, c);
    printf("Symmetric difference of A and B: ");
    print_set(c);
-  */
+  
    return 0;
 }
 
@@ -96,7 +97,7 @@ void print_set(int a[0]) {
         }
 	   for(i = 2; i <= a[0];i++) {
 		
-           printf(" ,%d", a[i]);
+           printf(", %d", a[i]);
       
        }
     printf("}\n");        //the closing brace for the set
@@ -169,7 +170,7 @@ void intersect_set(int a[], int b[], int c[]) {
 
 void delete_set(int v, int a[]) {
     
-    int i, c;
+    int i;
     
     /* Find the position of int v requested to be deleted. Swap a[i] with a[i+1]
      * Then decrement a[0] to change array size.
@@ -189,12 +190,45 @@ void delete_set(int v, int a[]) {
 
 void set_difference(int a[], int b[], int c[]) {
     
+    int i;
     
+    c[0]=0;  //c[0] is a special elements. It indicates the number of elements in set c.
+    
+    for(i = 1; i <= a[0]; i++) {
+        
+        if(!element_of(a[i], b)) {
+            
+            enter_set(a[i], c);
+            
+        }
+    }
     
 }
 
 void sym_difference(int a[], int b[], int c[]) {
     
+    int i;
     
+    c[0]=0;  //c[0] is a special elements. It indicates the number of elements in set c.
+    
+    /* Compare set a with b, if not in set b, add to c */
+    for(i=1; i<=a[0]; i++) {
+        
+        if(!element_of(a[i], b)) {
+            
+            enter_set(a[i], c);
+            
+        }
+    }
+    
+    /* Compare set b with a, if not in set a, add to c */
+    for (i = 1; i <= b[0]; i++) {
+        
+        if (!element_of(b[i], a)) {
+            
+            enter_set(b[i], c);
+            
+        }
+    }
     
 }
