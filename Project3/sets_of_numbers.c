@@ -110,36 +110,47 @@ void print_set(int a[0]) {
 void enter_set(int v, int a[]) {
 
     if(a[0] == MAX_SET_SIZE) {
-	printf("Max set size exceeded\n");
+        
+        printf("Max set size exceeded\n");
 
-    } else if (!element_of(v, a)) {  //calls element_of function to determine an element is already in the set
-	a[0]++;
+        //calls element_of function to determine an element is already in the set
+    } else if (!element_of(v, a)) {
+        
+        a[0]++;
      	a[a[0]]=v;
+        
    }
 }
 
 /*element_of returns 1(TRUE) or 0(FALSE) depending on whether the element is in the set
 */
 int element_of(int v, int a[]) {
+    
    int i;
     
     for(i = 1; i <= a[0]; i++) {
+        
         if ( a[i] == v) {
+            
             return TRUE;
+            
         }
+        
     }
+    
    return FALSE;
 }
 
 /*union_set carries out the union operation on set a and b, storing the result in set c.
 */
 void union_set(int a[], int b[], int c[]) {
+    
    int i;
    c[0]=0;  //c[0] is a special elements. It indicates the number of elements in set c.
    
     for(i=1; i<=a[0]; i++) {
         
-   	enter_set(a[i], c);
+        enter_set(a[i], c);
         
     }
     
@@ -154,6 +165,7 @@ void union_set(int a[], int b[], int c[]) {
 /*intersect_set carries out the intersect operation on set a and b, storing the result in set c.
 */
 void intersect_set(int a[], int b[], int c[]) {
+    
    int i;
     
    c[0]=0;  //c[0] is a special elements. It indicates the number of elements in set c.
