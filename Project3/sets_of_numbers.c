@@ -175,9 +175,12 @@ void delete_set(int v, int a[]) {
      * Then decrement a[0] to change array size.
      */
         for (i = 1; i <= a[0]; i++) {
+            
             if ( a[i] == v) {
-            a[i] = a[i + 1];
-            a[0]--;
+                
+                a[i] = a[i + 1];
+                a[0]--;
+                
             }
             
         }
