@@ -12,8 +12,8 @@
 int main() {
     
     char ch;
-    char message[SIZE];
-    int i, count = 0, *p;
+    char message[SIZE], *p;
+    int count = 0;
     
     printf("Please enter a sentence to be reversed: \n");
     
@@ -26,14 +26,18 @@ int main() {
     
     /* With pointers */
     
-    
-    
+    for (p = message + count - 1; p >= message; p--) {
+        
+        printf("%c", *p);
+        
+    }
+    /*
     for (i = count - 1; i >= 0; i--) {
         
         printf("%c", message[i]);
         
     }
-    
+    */
     printf("\n");
     
     return 0;
