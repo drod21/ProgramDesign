@@ -15,22 +15,62 @@
 
 int main() {
     
-    char ch, palindrome[SIZE];
+    char ch, palindrome[SIZE], *p, *q;
     
-    int i, count = 0, flag = FALSE, length;
+    p = palindrome;
+    q = palindrome;
+    
+    printf("Please enter a phrase: \n");
     
     while ((ch = getchar()) != '\n') {
         
-        palindrome[count++] = ch;
-        
+        if (ch >= 'A' && ch <= 'Z') {
+            
+            *(p++) = ch;
+            
+        } else if (ch >= 'a' && ch <= 'z') {
+            
+            *(p++) = ch - 32;
+            
+        }
     }
-    length = strlen(palindrome);
     
-    for (i = 0; i < length, i++) {
+    
+    while (q < p) {
         
+        p--;
+        if (*p != *q) {
+            
+            printf("Not a palindrome. \n");
+            break;
+            
+        } else {
+            
+            printf("Palindrome.\n", palindrome);
+            break;
+            
+        }
         
+        q++;
         
     }
+    
+    
+    /*
+    while (j < count) {
+        
+        count--;
+        
+        if (palindrome[count] != palindrome[j]) {
+            
+            printf("%s is not a palindrome.\n", palindrome);
+            
+        }
+        
+        j++;
+    
+    }*/
+    
     
     
     
