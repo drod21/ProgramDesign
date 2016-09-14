@@ -34,20 +34,10 @@ int islargest(int a[], int n) {
             
             largest = a[i];
             
-            
-            
         }
         
-        
-    }
-    
-    
-    for (i = 0; i < n; i++) {
-        
         if (a[i] == largest) {
-            
             index = i;
-            
         }
         
     }
