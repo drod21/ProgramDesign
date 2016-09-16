@@ -182,21 +182,36 @@ void intersect_set(int a[], int b[], int c[]) {
 
 void delete_set(int v, int a[]) {
     
-    int i;
+    int i, position, found = 0;
     
-    /* Find the position of int v requested to be deleted. Swap a[i] with a[i+1]
+    /* Find the position of int v requested to be deleted.
+     * Store that position.
+     * Swap a[i] with a[i+1]
      * Then decrement a[0] to change array size.
      */
         for (i = 1; i <= a[0]; i++) {
             
             if ( a[i] == v) {
                 
-                a[i] = a[i + 1];
-                a[0]--;
+                found = 1;
+                position = i;
+                break;
                 
             }
             
         }
+    
+    if (found == 1) {
+        
+        for (i = position; i < a[0]; i++) {
+            
+            a[i] = a[i + 1];
+            
+        }
+        
+    }
+    
+    a[0]--;
     
 }
 

@@ -1,10 +1,9 @@
-//
-//  addition.c
-//  
-//
-//  Created by Derek Rodriguez on 9/10/16.
-//
-//
+/* Derek Rodriguez
+ * U37516832
+ * 9/10/16
+ * Write a program that adds two numbers without use of + operator, only increment 
+ * or decrement
+ */
 
 #include <stdio.h>
 

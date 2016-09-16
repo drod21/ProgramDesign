@@ -8,19 +8,21 @@
 # ./try_addition
 # The user input from the script will not be shown on the screen.
 # Compare the results from your program with the expected results on the test cases.
-#
+
 echo '===================================================='
-#
+
 ./a.out <<-EndOfInput
 9 5
 EndOfInput
+
 echo '----------------------------------------------------'
 echo 'Expected:'
 echo 'Enter two numbers: 9 5'
 echo 'The addition is 14'
-#
+
+
 echo '===================================================='
-#
+
 ./a.out <<-EndOfInput
 9 -5
 EndOfInput
@@ -28,9 +30,10 @@ echo '----------------------------------------------------'
 echo 'Expected:'
 echo 'Enter two numbers: 9 -5'
 echo 'The addition is 4.'
-#
+
+
 echo '===================================================='
-#
+
 ./a.out <<-EndOfInput
 9 0
 EndOfInput
@@ -38,9 +41,10 @@ echo '----------------------------------------------------'
 echo 'Expected:'
 echo 'Enter two numbers: 9 0'
 echo 'The addition is 9.'
-#
+
+
 echo '===================================================='
-#
+
 ./a.out <<-EndOfInput
 -9 5
 EndOfInput
@@ -48,9 +52,10 @@ echo '----------------------------------------------------'
 echo 'Expected:'
 echo 'Enter two numbers: -9 5'
 echo 'The addition is -4'
-#
+
+
 echo '===================================================='
-#
+
 ./a.out <<-EndOfInput
 -9 -5
 EndOfInput
@@ -58,9 +63,10 @@ echo '----------------------------------------------------'
 echo 'Expected:'
 echo 'Enter two numbers: -9 -5'
 echo 'The addition is -14.'
-#
+
+
 echo '===================================================='
-#
+
 ./a.out <<-EndOfInput
 0 -9
 EndOfInput
@@ -68,6 +74,5 @@ echo '----------------------------------------------------'
 echo 'Expected:'
 echo 'Enter two numbers: 0 -9'
 echo 'The addition is -9.'
-#
+
 echo '===================================================='
-#
