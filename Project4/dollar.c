@@ -1,5 +1,10 @@
 /*dollar.c for project 5
   Program Design
+ *
+ * Derek Rodriguez
+ * U37516832
+ * 9/19/16
+ *
  */
 
 #include <stdio.h>
