@@ -191,7 +191,7 @@ void delete_set(int v, int a[]) {
      */
         for (i = 1; i <= a[0]; i++) {
             
-            if ( a[i] == v) {
+            if (a[i] == v) {
                 
                 found = 1;
                 position = i;
