@@ -26,22 +26,18 @@ int main() {
 
 int islargest(int a[], int n) {
     
-    int i, largest = a[0], index = 0;
+    int i, largest_index = 0;
     
-    for (i = 0; i < n; i++) {
+    for (i = 1; i < n; i++) {
         
-        if (a[i] > largest ) {
+        if (a[i] > a[largest_index]) {
             
-            largest = a[i];
+            largest_index = i;
             
-        }
-        
-        if (a[i] == largest) {
-            index = i;
         }
         
     }
     
-    return index;
+    return largest_index;
     
 }

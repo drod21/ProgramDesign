@@ -26,9 +26,9 @@ int main() {
 
 int fibonnaci(int num) {
     
-    if (num < 2) {
+    if (num == 1 || num == 2) {
         
-        return num;
+        return 1;
         
     } else {
         

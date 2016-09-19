@@ -23,13 +23,25 @@ int main() {
 }
 
 int isletter(char c) {
-    
+    /*
     if (isalpha(c)) {
         
         return 1;
         
     } else {
         return 0;
+    }
+    */
+    /* Assume we have no isalpha() function */
+    
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+        
+        return 1;
+        
+    } else {
+        
+        return 0;
+        
     }
     
 }
