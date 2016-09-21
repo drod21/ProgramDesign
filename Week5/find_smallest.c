@@ -34,7 +34,7 @@ int *find_smallest(int a[], int n) {
     
     min = a;
     
-    for (i = 0; i < n; i++) {
+    for (i = 1; i < n; i++) {
         
         if (a[i] < *min) {
             
