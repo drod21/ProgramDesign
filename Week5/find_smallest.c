@@ -21,15 +21,14 @@ int main() {
     
     printf("The smallest value is: %d\n", *min);
     
-    
     return 0;
     
 }
 
 int *find_smallest(int a[], int n) {
     
-    
-    int *min;
+    /*
+    int *min, *temp;
     int i;
     
     min = a;
@@ -38,12 +37,30 @@ int *find_smallest(int a[], int n) {
         
         if (a[i] < *min) {
             
-            *min = a[i];
+            temp = &a[i];
             
         }
         
     }
     
-    return min;
+    return temp;*/
     
+    
+    int i, smallest, *min;
+    
+    smallest = a[0];
+    
+    for (i = 1; i < n; i++) {
+        
+        if (a[i] < smallest) {
+            
+            smallest = a[i];
+            
+        }
+        
+    }
+    
+    min = &smallest;
+    
+    return min;
 }
