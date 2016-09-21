@@ -27,40 +27,22 @@ int main() {
 
 int *find_smallest(int a[], int n) {
     
-    /*
+    
     int *min, *temp;
     int i;
     
-    min = a;
+    min = &a[0];
     
     for (i = 1; i < n; i++) {
         
         if (a[i] < *min) {
             
-            temp = &a[i];
+            min = &a[i];
             
         }
         
     }
-    
-    return temp;*/
-    
-    
-    int i, smallest, *min;
-    
-    smallest = a[0];
-    
-    for (i = 1; i < n; i++) {
-        
-        if (a[i] < smallest) {
-            
-            smallest = a[i];
-            
-        }
-        
-    }
-    
-    min = &smallest;
     
     return min;
+    
 }
