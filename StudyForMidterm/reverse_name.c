@@ -9,18 +9,19 @@
 void reverse_name(char *name);
 
 #include <stdio.h>
+#include <string.h>
 #define N 80
 
 int main(void) {
     
-    char name[N + 1];
+    char name[N + 1], ch;
     int i = 0;
     
     printf("Please enter a name: \n");
     
-    while ((name[i] = getchar()) != '\n') {
+    while ((ch = getchar()) != '\n') {
         
-        i++;
+        name[i++] = ch;
         
     }
     
@@ -28,21 +29,67 @@ int main(void) {
     
     reverse_name(name);
     
+    printf("%s.", name);
+    
     return 0;
     
 }
 
 
 void reverse_name(char *name) {
+    char last[20], *p, first[20];
+    int count = 0, count2 = 0;
+   
     
+    
+    
+    for (p = name; *p != '\0'; p++) {
+        
+        first[count] = *p;
+        count++; // number of letters to space
+        
+        if (*p == ' ') {
+            
+            break;
+            
+        }
+        
+        
+    }
+    strcpy(last, p + 1);
+    
+    
+    for (p = p + 1; *p != '\0'; p++) {
+        
+        count2++;
+        
+        
+        if (*p == '\0') {
+            
+            break;
+            
+        }
+        
+    }
+    strcpy(name, last);
+    *(name + count2) = ',';
+    *(name + count2 + 1) = first[0];
+    *(name + count2 + 2) = '\0';
+    
+    
+
+    
+    
+    
+    /*
     int count1 = 0, count2 = 0;
     char last;
     
     do {
         
-        /* If count1 is zero, first character is stored ino last and count 
+         * If count1 is zero, first character is stored ino last and count
          * Is increased
-         */
+         
         
         if (count1 == 0 && *name != ' ') {
             
@@ -51,7 +98,7 @@ void reverse_name(char *name) {
             
         }
         
-        /* If character is equal to space, then count2 = 1 */
+        * If character is equal to space, then count2 = 1
         
         if (*name == ' ' && count1 != 0) {
             
@@ -59,9 +106,9 @@ void reverse_name(char *name) {
             
         }
         
-        /* If count2 is 1, character is not space, and character is not null
+        * If count2 is 1, character is not space, and character is not null
          * Print the last name
-         */
+         *
         
         if (count2 == 1 && *name != ' ' && *name != '\0') {
             
@@ -74,5 +121,6 @@ void reverse_name(char *name) {
     } while (*name != '\n');
     
     printf(", %c.\n", last);
+         */
     
 }
