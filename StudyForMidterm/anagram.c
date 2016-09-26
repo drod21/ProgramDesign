@@ -106,8 +106,6 @@ bool equal_array(int counts1[N], int counts2[N]) {
     
     int i, count = 0;
     
-    
-    
     for (i = 0; i < N; i++) {
         
             if (counts1[i] == counts2[i]) {
@@ -115,13 +113,17 @@ bool equal_array(int counts1[N], int counts2[N]) {
                 count++;
             
             }
-        
    
     }
     
     if (count == N) {
+        
         return true;
+        
     } else {
+        
     return false;
+        
     }
+    
 }
