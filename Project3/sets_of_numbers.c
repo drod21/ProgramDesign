@@ -195,7 +195,7 @@ void delete_set(int v, int a[]) {
                 
                 found = 1;
                 position = i;
-                break;
+                
                 
             }
             
@@ -208,10 +208,10 @@ void delete_set(int v, int a[]) {
             a[i] = a[i + 1];
             
         }
-        
+        a[0]--;
     }
     
-    a[0]--;
+    
     
 }
 
