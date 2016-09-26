@@ -29,7 +29,7 @@ int main(void) {
     
     reverse_name(name);
     
-    printf("%s.", name);
+    printf("%s. \n", name);
     
     return 0;
     
@@ -72,6 +72,7 @@ void reverse_name(char *name) {
         
     }
     strcpy(name, last);
+    
     *(name + count2) = ',';
     *(name + count2 + 1) = first[0];
     *(name + count2 + 2) = '\0';
