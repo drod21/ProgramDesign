@@ -8,10 +8,10 @@ int main(void)
 	int a[]={6, 8, 14, 5, 9, 23, 45, 65};
 	
 
-	int max_a;
-        int min_a;
+	int max_a = 0;
+        int min_a = 0;
 
-	max_min(a, 8, max_a, min_a);
+	max_min(a, 8, &max_a, &min_a);
 	printf("max is %d and min is %d\n", max_a, min_a);
 
 	return 0;
