@@ -13,7 +13,7 @@ int main(void)
 	int i;
 	printf("please enter 8 numbers:\n");
 	for(i=0;i<8;i++)
-	   scanf("%d", a[i]);
+	   scanf("%d", &a[i]);
 
 	max_min(a, 8, &max_a, &min_a);
 	printf("max is %d and min is %d\n", max_a, min_a);
