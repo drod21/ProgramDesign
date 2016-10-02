@@ -38,15 +38,35 @@ int main(void) {
 
 void reverse_name(char *name) {
    
-    char first;
+    char first, *p, *last;
+    
     int length;
     
     /* Store the first initial */
     first = *name;
     
+    for (p = name; *p != '\0'; p++) {
+        
+        if (*p == ' ') {
+            
+            break;
+            
+        }
+        
+    }
+    last = p + 1;
+    
+    
+    strcat(last, ", ");
+    length = strlen(last);
+    
+    *(last + length) = first;
+    *(last + length + 1) = '\0';
+    
+    
     /* Loop through name pointer till a space is reached,
      * Then point name to the first element after the space.
-     */
+     
      
     for (; *name != '\0'; name++) {
         
@@ -58,7 +78,7 @@ void reverse_name(char *name) {
         }
     }
     
-    /* Add the comma and space, find strlen of name, add first and null character */
+     Add the comma and space, find strlen of name, add first and null character
     strcat(name, ", ");
     length = strlen(name);
     
@@ -66,7 +86,7 @@ void reverse_name(char *name) {
     *(name + length + 1) = '\0';
     
     /* Print the final product */
-    printf("%s. \n", name);
+    printf("%s. \n", last);
     
     
     /* 
