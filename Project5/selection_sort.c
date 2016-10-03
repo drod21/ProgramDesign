@@ -9,7 +9,7 @@
 #include <stdio.h>
 #define N 10
 
-void selection_sort(int a[], int n);
+void selection_sort(int *a, int n);
 int *find_largest(int *a, int n);
 void swap(int *p, int *q);
 
@@ -31,7 +31,7 @@ int main(void) {
   return 0;
 }
 
-void selection_sort(int a[], int n) {
+void selection_sort(int *a, int n) {
 
     int *p = a;
 
