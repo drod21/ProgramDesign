@@ -16,19 +16,21 @@ int main()
 
 }
 
-int read_line(char *str, int n)
-{
-          int ch; int i = 0;
-
-          while ((ch = getchar()) != '\n')
-          {  if (i < n)
-             { *str++= ch;
-	      i++;
-             }
-	  }
-          *str = '\0';   /* terminates string */
-          return i;        /* number of characters stored */
+int read_line(char *str, int n) {
+    
+    int ch; int i = 0;
+    
+    while ((ch = getchar()) != '\n') {
+        if (i < n) {
+            *str++= ch;
+            i++;
+        }
+        
+    }
+    *str = '\0';   /* terminates string */
+    return i;        /* number of characters stored */
 }
+
 
 /*read_line2 skips the white space(s) before beginning to store input characters*/
 int read_line2(char *str, int n)
