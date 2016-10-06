@@ -10,7 +10,7 @@ int main()
 	char sen[STR_LEN+1];
 	printf("enter a sentence: ");
 	num_chars = read_line2(sen, STR_LEN);
-	printf("you entered: %s, it has %d characters", sen, num_chars);
+	printf("you entered: %s, it has %d characters\n", sen, num_chars);
 	return 0;
 
 
@@ -36,7 +36,8 @@ int read_line(char *str, int n) {
 int read_line2(char *str, int n)
 {
           int ch, i = 0;
-	  while((ch = getchar()) == ' ') ;
+	  while((ch = getchar()) == ' ')
+          ;
           *str++=ch;
           i++;
           while ((ch = getchar()) != '\n')
