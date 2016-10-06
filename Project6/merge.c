@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #define SIZE 1000
 
-void merge (char *s3, const char *s1, const char *s2);
+void merge (char *s3, char *s1, char *s2);
 int read_line(char *str, int n);
 
 
@@ -37,7 +37,7 @@ int main() {
     
 }
 
-void merge (char *s3, const char *s1, const char *s2) {
+void merge (char *s3, char *s1, char *s2) {
     
    /* s3 points to a string containing a string that 
     * Combines s1 and s2 letter by letter. 
@@ -52,18 +52,21 @@ void merge (char *s3, const char *s1, const char *s2) {
      * If s2 is not null character, add it to s3.
      * This covers each condition for any left over characters in each.
      */
-    for (; (*s1 != '\0') || (*s2 != '\0'); s1++, s2++) {
+    char *p = s1;
+    char *q = s2;
+    
+    while ((*p != '\0') || (*q != '\0')) {
         
-        if (*s1 != '\0') {
+        if (*p != '\0') {
             
-            *s3++ = *s1;
-            
+            *s3++ = *p;
+            p++;
         }
         
-        if (*s2 != '\0') {
+        if (*q != '\0') {
             
-            *s3++ = *s2;
-            
+            *s3++ = *q;
+            q++;
         }
         
     }
