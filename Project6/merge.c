@@ -52,10 +52,53 @@ void merge (char *s3, char *s1, char *s2) {
      * If s2 is not null character, add it to s3.
      * This covers each condition for any left over characters in each.
      */
+
     char *p = s1;
     char *q = s2;
     
-    while ((*p != '\0') || (*q != '\0')) {
+    int len1 = strlen(p);
+    int len2 = strlen(q);
+    if (len1 > len2) {
+        for (; (*p != '\0'); p++) {
+            
+            *s3++ = *p;
+            
+            if (*q != '\0') {
+                
+                *s3++ = *q;
+                q++;
+                
+            }
+            
+        }
+        
+    } else if (len1 < len2) {
+        
+        for (; *q != '\0'; q++) {
+            
+            if (*p != '\0') {
+                
+                *s3++ = *p;
+                p++;
+                
+            }
+            
+            *s3++ = *q;
+            
+        }
+        
+    } else if (len1 == len2) {
+        
+        for (; *p != '\0' || *q != '\0'; p++, q++) {
+            
+            *s3++ = *p;
+            *s3++ = *q;
+            
+        }
+        
+    }
+    
+  /*  while ((*p != '\0') || (*q != '\0')) {
         
         if (*p != '\0') {
             
@@ -69,7 +112,7 @@ void merge (char *s3, char *s1, char *s2) {
             q++;
         }
         
-    }
+    }*/
     
     // Terminate s3.
     *s3 = '\0';
