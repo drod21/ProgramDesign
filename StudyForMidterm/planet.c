@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int stringplanet(const char *s, const char *t);
 

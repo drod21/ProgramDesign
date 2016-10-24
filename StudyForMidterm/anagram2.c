@@ -10,7 +10,7 @@
 #include <string.h>
 #define N 26
 
-int are_anagrams(const char *word1, const char *word2);
+int are_anagrams(char *word1, char *word2);
 
 int main()
 {
@@ -22,48 +22,59 @@ int main()
     
     printf("enter a word: ");
     
-    while((ch=getchar())!= '\n')
-        
-    {
+    while((ch=getchar())!= '\n') {
+
         word1[ch - 'a']++;
         
     }
     
-    for(i =0;i<N;i++)
+    for(i =0;i<N;i++) {
+        
         printf("%d", word1[i]);
+    
+    }
     
     printf("\n");
     
     
     printf("enter the second word: ");
-    while((ch=getchar())!= '\n')
-        
-    {
+    
+    while((ch=getchar())!= '\n') {
         word2[ch - 'a']++;
         
     }
     
-    for(i = 0; i < N; i++)
+    for(i = 0; i < N; i++) {
+        
         printf("%d", word2[i]);
-    
+        
+    }
     
     printf("\n");
+    
     result = are_anagrams(word1, word2);
+    
     printf("Result is: %d\n", result);
     
-    if(result == 1)
+    if(result == 1) {
+        
         printf("The words are anagrams.\n");
-    else
+        
+    } else {
         
         printf("The words are NOT anagrams.\n");
+    
+    }
     
     return 0;
 }
 
-int are_anagrams(const char *word1, const char *word2) {
+int are_anagrams(char *word1, char *word2) {
     
     int count = 0;
     int len1, len2;
+    
+    char *p, *q;
     
     len1 = strlen(word1);
     len2 = strlen(word2);
@@ -74,15 +85,13 @@ int are_anagrams(const char *word1, const char *word2) {
         
     }
     
-    while (*word1 != '\0' && *word2 != '\0') {
+    for (p = word1, q = word2; *p != '\0' && *q !='\0'; p++, q++) {
 
     
         if (*word1 == *word2) {
             
             count++;
             
-            word1++;
-            word2++;
             
         }
     }

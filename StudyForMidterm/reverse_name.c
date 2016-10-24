@@ -6,11 +6,13 @@
 //
 //
 
-void reverse_name(char *name);
+
 
 #include <stdio.h>
 #include <string.h>
-#define N 80
+#define N 1000
+
+void reverse_name(char *name);
 
 int main(void) {
     
@@ -29,7 +31,7 @@ int main(void) {
     
     reverse_name(name);
     
-    //printf("%s. \n", name);
+    printf("%s. \n", name);
     
     return 0;
     
@@ -63,6 +65,14 @@ void reverse_name(char *name) {
     *(last + length) = first;
     *(last + length + 1) = '\0';
     
+    /* Print the final product */
+    //printf("%s. \n", last);
+    
+    while (*name != '\0') {
+        *name++ = *last;
+        last++;
+        
+    }
     
     /* Loop through name pointer till a space is reached,
      * Then point name to the first element after the space.
@@ -85,11 +95,10 @@ void reverse_name(char *name) {
     *(name + length) = first;
     *(name + length + 1) = '\0';
     
-    /* Print the final product */
-    printf("%s. \n", last);
+    printf("%s.\n", last);
     
     
-    /* 
+     
      *Old way of doing this, with arrays
      *
      

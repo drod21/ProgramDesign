@@ -29,9 +29,13 @@ int main(void) {
     read_word(second_word);
     
     if (equal_array(first_word, second_word)) {
+        
         printf("Words are anagrams.\n");
+    
     } else {
+    
         printf("Words are not anagrams.\n");
+    
     }
     
     

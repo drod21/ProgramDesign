@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
     int num = 0;
     for (i = 1; i < argc; i++) {
      
+        printf("%s", argv[i]);
         num += atoi(argv[i]);
         
         
