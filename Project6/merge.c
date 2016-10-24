@@ -51,7 +51,7 @@ void merge (char *s3, char *s1, char *s2) {
      * If s1 is not null character, add it to s3.
      * If s2 is not null character, add it to s3.
      * This covers each condition for any left over characters in each.
-     */
+     *
 
     char *p = s1;
     char *q = s2;
@@ -97,8 +97,11 @@ void merge (char *s3, char *s1, char *s2) {
         }
         
     }
+    */
     
-  /*  while ((*p != '\0') || (*q != '\0')) {
+    char *p = s1;
+    char *q = s2;
+    while ((*p != '\0') || (*q != '\0')) {
         
         if (*p != '\0') {
             
@@ -112,7 +115,7 @@ void merge (char *s3, char *s1, char *s2) {
             q++;
         }
         
-    }*/
+    }
     
     // Terminate s3.
     *s3 = '\0';
