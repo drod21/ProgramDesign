@@ -4,6 +4,7 @@
 struct node *add_to_list(struct node *list, int n);
 struct node *search_list(struct node *list, int n);
 struct node *delete_from_list(struct node *list, int n);
+struct node *find_largest(struct node *list);
 int count_n(struct node *list, int n);
 void clearList(struct node *list);
 
@@ -32,6 +33,13 @@ int main()
 	
 	count = count_n(first, number);
 	printf("The number of nodes that contains %d is %d.\n", number, count);
+    
+    printf("Largest node is: \n");
+    
+    find_largest(first);
+    
+    printf("%d \n", first->value);
+    
 	clearList(first);
 	return 0;
 
@@ -86,13 +94,51 @@ void clearList(struct node *list)
   {
 	 p = list;
      list = list->next;
-     if( p!= NULL)
+     if (p!= NULL)
            free(p);
   }
 }
+
+struct node *find_largest(struct node *list) {
+    
+    struct node *p = NULL;
+    
+    for (; list != NULL; list = list->next) {
+        
+        if (list->value > list->next->value) {
+            
+            p = list;
+            
+        } else if (list->next->value > list->value) {
+            
+            p = list->next;
+            
+            
+        }
+        
+        return p;
+        
+    }
+    
+    return NULL;
+    
+}
+
 int count_n(struct node *list, int n){
 	
-	return 0;
+    int count = 0;
+    
+    for (; list != NULL; list = list->next) {
+        
+        if (list->value == n) {
+            
+            count++;
+            
+        }
+        
+    }
+    
+    return count;
 
 }
 
