@@ -1,15 +1,21 @@
-//
-//  sort_boxes.c
-//  
-//
-//  Created by Derek Rodriguez on 10/30/16.
-//
-//
-
+/*
+ * Reads file boxes.txt and sort the boxes by volume. 
+ * Output the sorted boxes, including volumes in
+ * a text file called sorted_boxes.txt.
+ *
+ * Derek Rodriguez
+ * U37516832
+ * 10/30/2016
+ *
+ */
+ 
+ 
+ 
 #include <stdio.h>
 
+
 struct box {
-    
+    // Structure for boxes
     double length;
     double width;
     double height;
@@ -27,7 +33,7 @@ double getVolume(struct box boxes[]);
 int main() {
     
     FILE *in_file, *out_file;
-    
+    // Array of structures
     struct box boxes[N];
     
     char *in = "boxes.txt";
@@ -46,15 +52,16 @@ int main() {
         return 1;
     
     } else {
-        
+        // While loop to store values from in_file
         while (!feof(in_file) && !ferror(in_file)) {
         
             fscanf(in_file, "%lf, %lf, %lf, %lf", &boxes[count].length, &boxes[count].width, &boxes[count].height, &boxes[count].weight);
             count++;
         
     }
-        
+        // Sort the structure by volume
         selection_sort(boxes, count);
+        // Print the structure
         printProducts(out_file, boxes, count);
     }
     
@@ -65,7 +72,7 @@ int main() {
     
 }
 
-
+// Sort the array of structures boxes by volume
 void selection_sort(struct box boxes[], int n) {
         
     int i, largest = 0;
@@ -85,33 +92,44 @@ void selection_sort(struct box boxes[], int n) {
     }
 
     if (largest < n - 1) {
-        
+        // Swap largest with n - 1
         temp = boxes[n - 1];
         boxes[n - 1] = boxes[largest];
         boxes[largest] = temp;
         
     }
     
+    // Recursive call
     selection_sort(boxes, n - 1);
     
 }
 
 void printProducts(FILE *out_file, struct box boxes[], int count) {
-    
+    // Function to print the structure to out_file
     int i = 0;
     
-    
-    fprintf(out_file, "#\t\tLength\t\tWidth\t\tHeight\t\tVolume\t\tWeight\n");
+    printf( "# Length   Width    Height   Volume\tWeight\n");
     
     for (i = 1; i < count; i++) {
         
-        fprintf(out_file, "%d\t%lf\t%lf\t%lf\t%lf\t%lf\n", i, boxes[i].length,
+        printf("%d %lf %lf %lf %lf %lf\n", i, boxes[i].length,
                 boxes[i].width, boxes[i].height, boxes[i].volume, boxes[i].weight);
     }
+    
+    
+    fprintf(out_file, "# Length   Width    Height   Volume\tWeight\n");
+    
+    for (i = 1; i < count; i++) {
+        
+        fprintf(out_file,"%d %lf %lf %lf   %lf   %lf\n", i, boxes[i].length,
+               boxes[i].width, boxes[i].height, boxes[i].volume, boxes[i].weight);
+    }
+    
+    
 }
 
 double getVolume(struct box boxes[]) {
-    
+    // Use array of structure to compute volume
     boxes->volume = boxes->length * boxes->width * boxes->height;
     
     return boxes->volume;

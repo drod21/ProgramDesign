@@ -24,31 +24,44 @@ int main() {
     
     int freq[100] = {0};
     int count = 0;
-    int i, num_chars, pos;
+    int i = 0, chars_in_string, pos = 0;
+    int flag = 0;
     
     printf("Please enter a sentence: \n");
-    num_chars = read_line(input_words, STR_LEN + 1);
+    chars_in_string = read_line(input_words, STR_LEN + 1);
     // Strtok to tokenize string
     pch = strtok(input_words, " ,.!-");
     
     while (pch != NULL) {
-        // Checks is word is present already
-        pos = isPresent(pch, words, count);
+        for (i = 0; i < chars_in_string; i++) {
+       
+            if (strcmp(words[i], pch) == 0) {
+            
+                flag = 1;
+                break;
+    
+            } else {
+            
+                flag = 0;
         
-        if (pos == -1) {
+            }
+        }
+        
+        if (flag == 1) {
+            freq[i]++;
+            
+        } else if (flag == 0) {
             
             strcpy(words[count], pch);
             freq[count] = 1;
             count++;
             
-        } else {
-            // If word is present, increment word count
-            freq[pos]++;
-        
         }
+        
         pch = strtok(NULL, " ,.!");
         
     }
+    printf("%d\n", count);
     
     printf("The frequency is: \n");
     

@@ -1,11 +1,13 @@
-//
-//  frequency2.c
-//
-//
-//  Created by Derek Rodriguez on 10/19/16.
-//
-//
-
+/*
+ * Program that reads in a line of text and computes the frequency of the words in the text
+ *
+ * Derek Rodriguez
+ * U37516832
+ * 10/19/16
+ *
+ */
+ 
+ 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -35,6 +37,7 @@ int main() {
         // Checks if word is present already
         pos = isPresent(pch, words, count);
         
+        // If word is not present, strcopy in, increase count
         if (pos == -1) {
             
             strcpy(words[count], pch);
@@ -45,7 +48,9 @@ int main() {
             // If word is present, increment word count
             freq[pos]++;
             
+            
         }
+        // Further tokenize pch
         pch = strtok(NULL, " ,.!");
         
     }

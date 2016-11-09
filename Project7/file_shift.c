@@ -54,7 +54,7 @@ int main() {
             if (fgets(message, sizeof(message), in_file) != '\0') {
                 
                 shift(message, n);
-                fprintf(out_file, "%s", message);
+                fputs(message, out_file);
                 
             }
         }
@@ -79,22 +79,22 @@ void shift(char *message, int shift_amount) {
     /* Loop through message, check for lower case and upper case, 
      * perform shift
      */
-    
-    for (; *message != '\0'; message++) {
+    char *p;
+    for (p = message; *p != '\0'; p++) {
         // Lower case check
-        if (*message >= 'a' && *message <= 'z') {
+        if (*p >= 'a' && *p <= 'z') {
             // Shift by shift amount
-            *message = ((*message - 'a') + shift_amount) % 26 + 'a';
+            *p = ((*p - 'a') + shift_amount) % 26 + 'a';
             // Upper case check
-        } else if (*message >= 'A' && *message <= 'Z') {
+        } else if (*p >= 'A' && *p <= 'Z') {
             // Shift by shift amount
-            *message = ((*message - 'A') + shift_amount) % 26 + 'A';
+            *p = ((*p - 'A') + shift_amount) % 26 + 'A';
             
         }
         
     }
     
     // Store NULL character at end of message
-    *message = '\0';
+    *p = '\0';
     
 }
