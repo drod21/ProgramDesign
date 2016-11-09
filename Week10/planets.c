@@ -14,7 +14,7 @@ int main() {
     int i;
     char *planets[] = {"Mercury", "Venus", "Earth",
                         "Mars", "Jupiter", "Saturn",
-        "Uranus", "Neptune", "Pluto"};
+                        "Uranus", "Neptune", "Pluto"};
     
     FILE *pFile;
     
