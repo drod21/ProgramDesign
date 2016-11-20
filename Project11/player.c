@@ -3,59 +3,44 @@
  * 
  * Derek Rodriguez
  * U37516832
- * 11/13/2016
+ * 11/19/2016
  *
  */
-
 
 #include "player.h"
 #include "readline.h"
 
-
-/**********************************************************
- * main: Prompts the user to enter an operation code,     *
- *       then calls a function to perform the requested   *
- *       action. Repeats until the user enters the        *
- *       command 'q'. Prints an error message if the user *
- *       enters an illegal code.                          *
- **********************************************************/
-
-
 struct player *append_to_list(struct player *roster) {
 
-    struct player *cur, *new_node, *temp;
-    int number;
-    
-    printf("\nEnter player number: \n");
-    scanf("%d", &number);
-    
-    for (temp = roster; temp != NULL; temp = temp->next) {
-        
-        if (temp != NULL && temp->number == number) {
-            
-            printf("\nPlayer already exists.");
-            return roster;
-            
-        }
-    }
-    
+    struct player *cur, *new_node;
+   
     new_node = malloc(sizeof(struct player));
     
     if (new_node == NULL) {
         
         printf("Database is full. Cannot add more players. \n");
         return roster;
-        
     }
-    /* Store number into new_node */
-    new_node->number = number;
+    
+    
+    printf("\nEnter player number: \n");
+    scanf("%d", &new_node->number);
+    
+    for (cur = roster; cur != NULL && (strcmp(cur->last_name, new_node->last_name) > 0); cur = cur->next) {
+        
+        if (cur != NULL && new_node->number == cur->number) {
+            
+            printf("\nPlayer already exists.");
+            return roster;
+            
+        }
+   
+    }
     /* Read in last name, first name */
     printf("Please enter the player's last name: \n");
     read_line(new_node->last_name, NAME_LEN);
-    
     printf("Please enter the player's first name: \n");
     read_line(new_node->first_name, NAME_LEN);
-    /* Set new_node->next to null, since it's the last node in the list */
     
     
     /* new_node is the top of the list. */
@@ -65,18 +50,69 @@ struct player *append_to_list(struct player *roster) {
         roster->next = NULL;
         return new_node;
         
-    } else {
+    } else if (strcmp(roster->last_name, new_node->last_name) > 0) {
         
-        /* Loop to end of roster, use cur to point to the end of roster */
-        for (cur = roster; cur->next != NULL; cur = cur->next);
-        /* Store new_node to the end of the list */
-        cur->next = new_node;
-        new_node->next = NULL;
-        return roster;
+        new_node->next = roster;
+        roster = new_node;
+   
+    } else {
+         // Loop to end of roster, use cur to point to the end of roster
+        for (cur = roster; cur->next != NULL && (((strcmp(cur->next->last_name, new_node->last_name) <= 0)) && (strcmp(cur->next->first_name, new_node->first_name) < 0)); cur = cur->next)
+             ;
+        
+         // Store new_node to the end of the list
+            if (cur->next == NULL) {
+                
+                cur->next = new_node;
+                new_node->next = NULL;
+                
+            } else {
+                // Place new_node between cur node and next node in list
+                new_node->next = cur->next;
+                cur->next = new_node;
+                
+        }
         
     }
     
-    free(new_node);
+    return roster;
+    
+}
+
+struct player *delete_from_list(struct player *roster) {
+    
+    struct player *prev, *cur;
+    int number;
+    
+    printf("\nPlease enter a player's number to remove: \n");
+    scanf("%d", &number);
+    
+    for (cur = roster, prev = NULL;
+         cur != NULL && cur->number != number;
+         prev = cur, cur = cur->next);
+    
+    if (cur == NULL) {
+
+        printf("Player does not exist. \n");
+        return roster; /* Player not found */
+    
+    }
+    
+    if (prev == NULL) {
+        
+        roster = roster->next;  /* Player was found in the first node */
+        printf("Player %s, %s deleted. \n", cur->last_name, cur->first_name);
+        
+    } else {
+        
+        prev->next = cur->next; /* Player found in some other node */
+        printf("Player %s, %s deleted. \n", cur->last_name, cur->first_name);
+        
+    }
+    
+    free(cur);
+    
+    return roster;
     
 }
 

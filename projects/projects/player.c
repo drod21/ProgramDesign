@@ -56,7 +56,7 @@ struct player *append_to_list(struct player *roster) {
     printf("Please enter the player's first name: \n");
     read_line(new_node->first_name, NAME_LEN);
     /* Set new_node->next to null, since it's the last node in the list */
-    
+    new_node->next = NULL;
     
     /* new_node is the top of the list. */
     if (roster == NULL) {
@@ -66,7 +66,6 @@ struct player *append_to_list(struct player *roster) {
         return new_node;
         
     } else {
-        
         /* Loop to end of roster, use cur to point to the end of roster */
         for (cur = roster; cur->next != NULL; cur = cur->next);
         /* Store new_node to the end of the list */
