@@ -8,16 +8,40 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "line.h"
 
 #define MAX_LINE_LEN 60
+#define MAX_WORD_LEN 20
 
 char line[MAX_LINE_LEN + 1];
 int line_len = 0;
 int num_words = 0;
 
+struct word {
+    
+    char word[MAX_WORD_LEN + 1];
+    struct word *next;
+    
+};
+
+struct word *first_word = NULL;
+struct word *cur_word = NULL;
+
+
 void clear_line(void) {
+    
+    struct word *temp;
+    
+    while (first_word != NULL) {
+        
+        temp = first_word;
+        first_word = first_word->next;
+        free(temp);
+        
+    }
     
     line[0] = '\0';
     line_len = 0;
@@ -25,17 +49,44 @@ void clear_line(void) {
     
 }
 
-void add_words(const char *word) {
+void add_word(const char *word) {
     
-    if (num_words > 0) {
+    if (num_words > 0)
+        line_len++; /* count spaces after words */
+    
+    if (first_word == NULL) {
+        first_word = malloc(sizeof(struct word));
+    
+        if (first_word != NULL) {
+            
+            strcpy(first_word->word, word);
+            first_word->next = NULL;
+            cur_word = first_word;
+            
+        } else {
+            
+            printf("Unable to allocate memory.\n");
+            return;
+            
+        }
+    
+    } else {
         
-        line[line_len] = ' ';
-        line[line_len + 1] = '\0';
-        line_len++;
-        
+        struct word *temp = malloc(sizeof(struct word));
+        if (temp != NULL) {
+            strcpy(temp->word, word);
+            temp->next = NULL;
+            cur_word->next = temp;
+            cur_word = temp;
+            
+        } else {
+            
+            printf("Unable to allocate memory. \n");
+            return;
+            
+        }
     }
     
-    strcat(line, word);
     line_len += strlen(word);
     num_words++;
     
@@ -53,10 +104,30 @@ void write_line(void) {
     
     extra_spaces = MAX_LINE_LEN - line_len;
     
+    struct word *line_out = first_word;
+    
+    for (; line_out != NULL; line_out = line_out->next) {
+        
+        printf("%s", line_out->word);
+        
+        if (line_out->next != NULL) {
+            
+            putchar(' ');
+            spaces_to_insert = extra_spaces / (num_words - 1);
+            
+            for (i = 0; i <spaces_to_insert; i++)
+                putchar(' ');
+            
+            extra_spaces -= spaces_to_insert;
+            num_words--;
+            
+        }
+    }
+    /* original
     for (i = 0; i < line_len; i++) {
         
-        if (line[i] != ' ')
-            putchar(line[i]);
+        if (word->line[i] != ' ')
+            putchar(word->line[i]);
         else {
             
             spaces_to_insert = extra_spaces / (num_words - 1);
@@ -68,14 +139,29 @@ void write_line(void) {
         }
         
     }
+     */
     
-    putchar('\n');
+    printf("\n");
     
 }
 
 void flush_line(void) {
-    
+    /* original
     if (line_len > 0)
         puts(line);
+    */
     
+    if (line_len > 0) {
+        
+        struct word *p = first_word;
+        
+        for (; p != NULL; p = p->next) {
+            
+            printf("%s ", p->word);
+            
+        }
+        
+        printf("\n");
+        
+    }
 }

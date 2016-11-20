@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include "boolean.h"
+#include "prime.h"
 
 Bool is_prime(int n)
 {
@@ -19,16 +20,4 @@ Bool is_prime(int n)
   return TRUE;
 }
 
-int main(void)
-{
-  int n;
 
-  printf("Enter a number: ");
-  scanf("%d", &n);
-  if (is_prime(n))
-    printf("Prime\n");
-  else
-    printf("Not prime\n");
-
-  return 0;
-}
