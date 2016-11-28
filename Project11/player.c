@@ -42,6 +42,23 @@ struct player *append_to_list(struct player *roster) {
     printf("Please enter the player's first name: \n");
     read_line(new_node->first_name, NAME_LEN);
     
+    char str1[NAME_LEN + 1];
+    char str2[NAME_LEN + 1];
+    
+    strcpy(str1, new_node->last_name);
+    strcat(str1, new_node->first_name);
+    strcpy(str2, roster->last_name);
+    strcat(str2, roster->first_name);
+    
+    int result = strcmp(str1, str2);
+    
+    /*for (struct node *p = roster; p->next != NULL; p = p->next) {
+    strcpy(str2, p->last_name);
+    strcat(str2, p->first_name);*/
+        
+    
+    
+    
     
     /* new_node is the top of the list. */
     if (roster == NULL) {

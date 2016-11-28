@@ -10,6 +10,11 @@
 #include <string.h>
 #include <ctype.h>
 
+struct word {
+    
+    char words[WORD_LEN + 1];
+};
+
 #define STR_LEN 1000
 #define WORD_LEN 50
 
